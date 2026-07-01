@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexavyr · Montage Chantier Avant/Après</title>
+<style>
+  :root{
+    --bg:#080b14;--bg2:#0d1322;--card:#111a2e;--line:rgba(255,255,255,.08);
+    --txt:#eaf0fb;--muted:#9aa8c4;--dim:#6b7a99;--acc:#16d6a3;--acc2:#2dd4bf;
+    --grad:linear-gradient(135deg,#16d6a3,#2dd4bf);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.55;padding:30px 20px}
+  .wrap{max-width:1180px;margin:0 auto}
+  .top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:8px}
+  .logo{font-weight:900;font-size:1.2rem;letter-spacing:-.03em}
+  .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .badge{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);border:1px solid rgba(22,214,163,.35);padding:5px 12px;border-radius:999px;font-weight:700}
+  h1{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:6px 0}
+  .sub{color:var(--muted);font-size:.95rem;margin-bottom:24px;max-width:680px}
+  .layout{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start}
+  @media(max-width:880px){.layout{grid-template-columns:1fr}}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .panel h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .drops{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .drop{border:2px dashed var(--line);border-radius:12px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.2s;text-align:center;padding:8px;position:relative;overflow:hidden;background:var(--bg2)}
+  .drop:hover,.drop.drag{border-color:var(--acc);background:rgba(22,214,163,.06)}
+  .drop .ic{font-size:1.6rem;opacity:.6}
+  .drop .lab{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:6px;color:var(--muted)}
+  .drop .hint{font-size:.66rem;color:var(--dim);margin-top:2px}
+  .drop img.thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .drop .tag{position:absolute;top:6px;left:6px;font-size:.6rem;font-weight:800;letter-spacing:.1em;background:rgba(8,11,20,.8);padding:3px 7px;border-radius:6px;z-index:2}
+  .ctrl{margin-top:20px}
+  .ctrl label{font-size:.78rem;color:var(--muted);display:block;margin-bottom:8px;font-weight:600}
+  .segs{display:flex;gap:6px;flex-wrap:wrap}
+  .seg{flex:1;min-width:60px;text-align:center;font-size:.78rem;padding:9px 6px;border:1px solid var(--line);border-radius:9px;cursor:pointer;transition:.15s;background:var(--bg2);color:var(--muted)}
+  .seg.on{border-color:var(--acc);color:var(--txt);background:rgba(22,214,163,.1)}
+  .switch{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg2);margin-top:12px}
+  .switch small{color:var(--dim);font-size:.72rem}
+  .tgl{width:42px;height:24px;border-radius:999px;background:#2a3658;position:relative;cursor:pointer;transition:.2s;flex-shrink:0}
+  .tgl.on{background:var(--acc)}
+  .tgl::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
+  .tgl.on::after{left:21px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:11px;font-weight:700;font-size:.92rem;cursor:pointer;border:none;transition:.2s;margin-top:16px}
+  .btn-pri{background:var(--grad);color:#04231b}
+  .btn-pri:disabled{opacity:.4;cursor:not-allowed}
+  .btn-pri:not(:disabled):hover{transform:translateY(-1px)}
+  .btn-gho{background:transparent;border:1px solid var(--line);color:var(--muted);margin-top:10px}
+  .btn-gho:hover{border-color:var(--acc);color:var(--acc)}
+  .preview-wrap{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.78rem;color:var(--muted)}
+  .canvas-box{background:repeating-conic-gradient(#0c1322 0% 25%,#0e1628 0% 50%) 50%/22px 22px;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:2/1;display:flex;align-items:center;justify-content:center}
+  canvas{max-width:100%;max-height:100%;display:block}
+  .empty{color:var(--dim);text-align:center;padding:40px;font-size:.9rem}
+  .empty .big{font-size:2rem;margin-bottom:10px;opacity:.5}
+  .secteurs{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .secteurs span{font-size:.72rem;color:var(--muted);border:1px solid var(--line);padding:5px 11px;border-radius:8px}
+  .foot{text-align:center;color:var(--dim);font-size:.78rem;margin-top:30px}
+  .foot a{color:var(--acc);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="logo">NEXA<span>VYR</span></div>
+    <span class="badge">● Montage Chantier · Démo live</span>
+  </div>
+  <h1>Transformez vos chantiers en preuves qui vendent.</h1>
+  <p class="sub">Uploadez une photo <b>avant</b> et une photo <b>après</b>. Nexavyr assemble le montage propre (cadrage, labels, watermark), puis vous le téléchargez en PNG haute définition — prêt pour vos réseaux, votre devis ou à envoyer au client.</p>
+
+  <div class="layout">
+    <!-- CONTROLS -->
+    <div class="panel">
+      <h3>Vos photos</h3>
+      <div class="drops">
+        <div class="drop" id="dropBefore">
+          <span class="tag" style="color:#ff8f8f">AVANT</span>
+          <span class="ic">⬆</span><span class="lab">Avant</span><span class="hint">Glissez ou cliquez</span>
+          <input type="file" accept="image/*" hidden id="fileBefore">
+        </div>
+        <div class="drop" id="dropAfter">
+          <span class="tag" style="color:var(--acc)">APRÈS</span>
+          <span class="ic">⬆</span><span class="lab">Après</span><span class="hint">Glissez ou cliquez</span>
+          <input type="file" accept="image/*" hidden id="fileAfter">
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>Disposition</label>
+        <div class="segs" id="segLayout">
+          <div class="seg on" data-v="side">Côte à côte</div>
+          <div class="seg" data-v="split">Diagonale</div>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>Style des labels</label>
+        <div class="segs" id="segLabel">
+          <div class="seg" data-v="none">Aucun</div>
+          <div class="seg on" data-v="minimal">Minimal</div>
+          <div class="seg" data-v="bold">Bold</div>
+        </div>
+      </div>
+
+      <div class="switch">
+        <div><b style="font-size:.85rem">Watermark Nexavyr</b><br><small>Logo discret en bas du montage</small></div>
+        <div class="tgl on" id="tglWm"></div>
+      </div>
+
+      <button class="btn btn-pri" id="dlBtn" disabled>⬇ Télécharger le PNG</button>
+      <button class="btn btn-gho" id="resetBtn">↺ Réinitialiser</button>
+
+      <div class="secteurs">
+        <span>🌳 Jardin</span><span>🪵 Terrasse</span><span>🏊 Piscine</span><span>🧱 Allée</span><span>💡 Éclairage</span>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-wrap">
+      <div class="preview-head"><span>👁 Aperçu</span><span>2160 × 1080 px · HD</span></div>
+      <div class="canvas-box">
+        <canvas id="cv" width="2160" height="1080" style="display:none"></canvas>
+        <div class="empty" id="empty"><div class="big">🏗️</div>Ajoutez une photo <b>avant</b> et une photo <b>après</b><br>pour voir le montage se générer.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot">Module Nexavyr · <a href="index.html">← Retour au site</a></p>
+</div>
+
+<script>
+const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+const state={before:null, after:null, layout:'side', label:'minimal', watermark:true};
+
+// --- file handling ---
+function loadImg(file, slot){
+  if(!file || !file.type.startsWith('image/')) return;
+  const r=new FileReader();
+  r.onload=e=>{ const img=new Image(); img.onload=()=>{ state[slot]=img; thumb(slot,e.target.result); render(); }; img.src=e.target.result; };
+  r.readAsDataURL(file);
+}
+function thumb(slot,src){
+  const drop=document.getElementById(slot==='before'?'dropBefore':'dropAfter');
+  let t=drop.querySelector('img.thumb');
+  if(!t){t=document.createElement('img');t.className='thumb';drop.appendChild(t);}
+  t.src=src;
+}
+function wireDrop(dropId,inputId,slot){
+  const drop=document.getElementById(dropId), input=document.getElementById(inputId);
+  drop.addEventListener('click',()=>input.click());
+  input.addEventListener('change',e=>loadImg(e.target.files[0],slot));
+  ['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag');}));
+  ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag');}));
+  drop.addEventListener('drop',e=>loadImg(e.dataTransfer.files[0],slot));
+}
+wireDrop('dropBefore','fileBefore','before');
+wireDrop('dropAfter','fileAfter','after');
+
+// --- segmented controls ---
+function wireSeg(id,key){
+  document.getElementById(id).addEventListener('click',e=>{
+    const s=e.target.closest('.seg'); if(!s)return;
+    [...e.currentTarget.children].forEach(c=>c.classList.remove('on'));
+    s.classList.add('on'); state[key]=s.dataset.v; render();
+  });
+}
+wireSeg('segLayout','layout'); wireSeg('segLabel','label');
+document.getElementById('tglWm').addEventListener('click',function(){this.classList.toggle('on');state.watermark=this.classList.contains('on');render();});
+document.getElementById('resetBtn').addEventListener('click',()=>location.reload());
+
+// --- draw helper: cover-fit an image into a rect ---
+function drawCover(img,x,y,w,h){
+  const ir=img.width/img.height, rr=w/h; let sw,sh,sx,sy;
+  if(ir>rr){ sh=img.height; sw=sh*rr; sx=(img.width-sw)/2; sy=0; }
+  else { sw=img.width; sh=sw/rr; sx=0; sy=(img.height-sh)/2; }
+  ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+}
+function label(text,x,y,color){
+  if(state.label==='none')return;
+  ctx.save();
+  const bold=state.label==='bold';
+  ctx.font=`800 ${bold?72:48}px -apple-system,Segoe UI,Arial`;
+  const padX=bold?34:24, padY=bold?20:14, tw=ctx.measureText(text).width;
+  ctx.fillStyle=bold?color:'rgba(8,11,20,.72)';
+  const bx=x, by=y, bw=tw+padX*2, bh=(bold?72:48)+padY*2;
+  if(typeof ctx.roundRect==='function'){ctx.beginPath();ctx.roundRect(bx,by,bw,bh,14);ctx.fill();}
+  else ctx.fillRect(bx,by,bw,bh);
+  ctx.fillStyle=bold?'#04231b':color;
+  ctx.textBaseline='top'; ctx.fillText(text,bx+padX,by+padY+2);
+  ctx.restore();
+}
+function watermark(){
+  if(!state.watermark)return;
+  ctx.save();
+  ctx.font='800 40px -apple-system,Segoe UI,Arial';
+  const t='NEXAVYR', tw=ctx.measureText(t).width;
+  ctx.fillStyle='rgba(8,11,20,.55)';
+  if(typeof ctx.roundRect==='function'){ctx.beginPath();ctx.roundRect(cv.width-tw-90,cv.height-78,tw+58,52,12);ctx.fill();}
+  ctx.fillStyle='#16d6a3'; ctx.textBaseline='middle';
+  ctx.fillText(t,cv.width-tw-62,cv.height-50);
+  ctx.restore();
+}
+
+function render(){
+  const ready=state.before&&state.after;
+  document.getElementById('dlBtn').disabled=!ready;
+  if(!ready) return;
+  document.getElementById('empty').style.display='none';
+  cv.style.display='block';
+  ctx.fillStyle='#0d1322'; ctx.fillRect(0,0,cv.width,cv.height);
+  const W=cv.width,H=cv.height,gap=8;
+
+  if(state.layout==='side'){
+    const half=(W-gap)/2;
+    drawCover(state.before,0,0,half,H);
+    drawCover(state.after,half+gap,0,half,H);
+    ctx.fillStyle='#16d6a3'; ctx.fillRect(half,0,gap,H);
+    label('AVANT',40,40,'#ff8f8f');
+    label('APRÈS',half+gap+40,40,'#16d6a3');
+  } else {
+    // diagonale : avant en fond, après masqué en triangle
+    drawCover(state.before,0,0,W,H);
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(W*0.42,0); ctx.lineTo(W,0); ctx.lineTo(W,H); ctx.lineTo(W*0.58,H); ctx.closePath();
+    ctx.clip();
+    drawCover(state.after,0,0,W,H);
+    ctx.restore();
+    ctx.save();
+    ctx.strokeStyle='#16d6a3'; ctx.lineWidth=8;
+    ctx.beginPath(); ctx.moveTo(W*0.42,0); ctx.lineTo(W*0.58,H); ctx.stroke();
+    ctx.restore();
+    label('AVANT',40,40,'#ff8f8f');
+    label('APRÈS',W-(state.label==='bold'?260:200),40,'#16d6a3');
+  }
+  watermark();
+}
+
+document.getElementById('dlBtn').addEventListener('click',()=>{
+  if(!(state.before&&state.after))return;
+  const a=document.createElement('a');
+  a.download='nexavyr-chantier-avant-apres.png';
+  a.href=cv.toDataURL('image/png');
+  a.click();
+});
+</script>
+</body>
+</html>
+        

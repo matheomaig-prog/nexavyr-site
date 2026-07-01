@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+<title>Découverte 15 min · Le rendu sur un de vos chantiers · Nexavyr</title>
+<meta name="description" content="Réservez 15 min : on voit ensemble le rendu avant / après sur un de vos vrais chantiers. 30 secondes pour laisser vos infos.">
+<meta name="theme-color" content="#080b14">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root{
+    --bg:#080b14;
+    --bg2:#0d1322;
+    --teal:#16d6a3;
+    --teal2:#2dd4bf;
+    --grad:linear-gradient(135deg,#16d6a3,#2dd4bf);
+    --text:#eaf0fb;
+    --muted:#9aa8c4;
+    --line:rgba(154,168,196,.18);
+    --field:rgba(255,255,255,.04);
+    --field-focus:rgba(22,214,163,.06);
+    --err:#ff8a8a;
+    --sat:env(safe-area-inset-top,0px);
+    --sab:env(safe-area-inset-bottom,0px);
+    --sal:env(safe-area-inset-left,0px);
+    --sar:env(safe-area-inset-right,0px);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+    position:fixed;
+    inset:0;
+  }
+
+  /* ---------- Fond animé ---------- */
+  #bg-canvas{position:fixed;inset:0;z-index:0;display:block;}
+  .halo{position:fixed;border-radius:50%;filter:blur(80px);opacity:.32;z-index:0;pointer-events:none;}
+  .halo.a{width:60vmax;height:60vmax;left:-20vmax;top:-15vmax;
+    background:radial-gradient(circle at center,rgba(22,214,163,.45),transparent 70%);
+    animation:float1 22s ease-in-out infinite;}
+  .halo.b{width:55vmax;height:55vmax;right:-22vmax;bottom:-20vmax;
+    background:radial-gradient(circle at center,rgba(45,212,191,.30),transparent 70%);
+    animation:float2 28s ease-in-out infinite;}
+  .vignette{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 30%,transparent 40%,rgba(4,6,12,.55) 100%);}
+  @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(6vmax,4vmax)}}
+  @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-5vmax,-4vmax)}}
+
+  /* ---------- Layout ---------- */
+  .app{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+    padding:calc(var(--sat) + 14px) calc(var(--sar) + 18px) calc(var(--sab) + 16px) calc(var(--sal) + 18px);}
+
+  header.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:0 0 auto;}
+  header.bar img{height:24px;display:block;}
+  .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;}
+
+  .progress{flex:0 0 auto;height:4px;border-radius:99px;background:rgba(255,255,255,.07);margin-top:12px;overflow:hidden;}
+  .progress > i{display:block;height:100%;width:0%;border-radius:99px;background:var(--grad);
+    transition:width .5s cubic-bezier(.22,1,.36,1);}
+
+  main{flex:1 1 auto;display:flex;align-items:center;justify-content:center;position:relative;min-height:0;}
+  .stage{width:100%;max-width:560px;margin:0 auto;}
+
+  /* ---------- Steps ---------- */
+  .step{display:none;}
+  .step.active{display:block;animation:stepIn .5s cubic-bezier(.22,1,.36,1) both;}
+  @keyframes stepIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--teal);
+    letter-spacing:.04em;text-transform:uppercase;font-weight:600;margin-bottom:14px;}
+  .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);}
+
+  h1{font-size:30px;line-height:1.18;font-weight:700;margin:0 0 12px;letter-spacing:-.01em;}
+  .step h2{font-size:25px;line-height:1.22;font-weight:700;margin:0 0 8px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);font-size:16px;margin:0 0 24px;}
+  .opt{color:var(--muted);font-weight:400;font-size:.8em;}
+
+  /* ---------- Fields ---------- */
+  .field{width:100%;font-family:inherit;font-size:18px;color:var(--text);
+    background:var(--field);border:1.5px solid var(--line);border-radius:14px;
+    padding:16px 16px;outline:none;transition:border-color .2s,background .2s,box-shadow .2s;
+    -webkit-appearance:none;appearance:none;}
+  textarea.field{resize:none;min-height:120px;line-height:1.45;}
+  .field::placeholder{color:#5d6b88;}
+  .field:focus{border-color:var(--teal);background:var(--field-focus);
+    box-shadow:0 0 0 4px rgba(22,214,163,.12);}
+
+  .error{color:var(--err);font-size:14px;margin-top:10px;min-height:18px;
+    opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;}
+  .error.show{opacity:1;transform:translateY(0);}
+
+  /* ---------- Buttons & hints ---------- */
+  .row{display:flex;align-items:center;gap:12px;margin-top:24px;flex-wrap:wrap;}
+  .btn{font-family:inherit;font-size:17px;font-weight:600;border:none;cursor:pointer;
+    border-radius:12px;padding:15px 26px;display:inline-flex;align-items:center;gap:9px;
+    transition:transform .12s ease,filter .2s,opacity .2s;min-height:52px;}
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--grad);color:#04130d;box-shadow:0 8px 26px rgba(22,214,163,.28);}
+  .btn-primary:hover{filter:brightness(1.05);}
+  .btn-primary[disabled]{opacity:.6;cursor:default;}
+  .btn-ghost{background:rgba(255,255,255,.05);color:var(--text);border:1.5px solid var(--line);}
+  .btn-back{background:transparent;border:1.5px solid var(--line);color:var(--muted);
+    width:52px;padding:0;justify-content:center;font-size:20px;}
+
+  .hint{font-size:13px;color:var(--muted);margin-top:18px;display:flex;align-items:center;gap:6px;}
+  kbd{font-family:inherit;font-size:12px;background:rgba(255,255,255,.07);border:1px solid var(--line);
+    border-bottom-width:2px;border-radius:6px;padding:2px 7px;color:var(--text);}
+
+  /* ---------- Success ---------- */
+  .check{width:74px;height:74px;border-radius:50%;background:var(--grad);
+    display:flex;align-items:center;justify-content:center;margin-bottom:22px;
+    box-shadow:0 10px 34px rgba(22,214,163,.35);animation:pop .55s cubic-bezier(.34,1.56,.64,1) both;}
+  .check svg{width:38px;height:38px;}
+  @keyframes pop{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+
+  .crosssell{margin-top:30px;padding:20px;border-radius:16px;
+    border:1.5px solid var(--line);background:rgba(255,255,255,.03);}
+  .crosssell p{margin:0 0 14px;color:var(--muted);font-size:15px;}
+  .crosssell p strong{color:var(--text);}
+
+  /* ---------- Sending overlay ---------- */
+  .sending{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:16px;margin-top:8px;}
+  .spinner{width:22px;height:22px;border-radius:50%;border:3px solid rgba(255,255,255,.15);
+    border-top-color:var(--teal);animation:spin .8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---------- Mobile tuning ---------- */
+  @media (max-width:420px){
+    body{font-size:16px;}
+    h1{font-size:26px;}
+    .step h2{font-size:22px;}
+    .sub{font-size:15px;}
+    .app{padding-left:calc(var(--sal) + 16px);padding-right:calc(var(--sar) + 16px);}
+    .btn{flex:1 1 auto;justify-content:center;}
+    .btn-back{flex:0 0 auto;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important;}
+    .step.active{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="halo a" aria-hidden="true"></div>
+<div class="halo b" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="app">
+  <header class="bar">
+    <img src="logo.svg" alt="Nexavyr">
+    <span class="count" id="counter"></span>
+  </header>
+  <div class="progress"><i id="bar"></i></div>
+
+  <main>
+    <div class="stage">
+
+      <!-- 0 · Accueil -->
+      <section class="step active" data-step="welcome">
+        <span class="kicker"><span class="dot"></span> Découverte 15 min</span>
+        <h1>Voyez le rendu sur un de vos chantiers.</h1>
+        <p class="sub">30 secondes pour laisser vos infos. On voit ensemble, en 15 min, l'avant / après sur un de vos vrais chantiers. Sans engagement.</p>
+        <div class="row">
+          <button class="btn btn-primary" data-next>C'est parti <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="hint">Appuyez sur <kbd>Entrée ↵</kbd> pour avancer</p>
+      </section>
+
+      <!-- 1 · Nom -->
+      <section class="step" data-step="field" data-required="1" data-name="nom_complet">
+        <span class="kicker"><span class="dot"></span> Vous</span>
+        <h2>Quel est votre nom ?</h2>
+        <p class="sub">Pour qu'on sache qui recontacter.</p>
+        <input class="field" type="text" inputmode="text" autocomplete="name"
+               placeholder="Prénom et nom" enterkeyhint="next">
+        <div class="error"></div>
+        <div class="row">
+          <button class="btn btn-back" data-back aria-label="Revenir">←</button>
+          <button class="btn btn-primary" data-next>Suivant <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="hint"><kbd>Entrée ↵</kbd> pour continuer</p>
+      </section>
+
+      <!-- 2 · Entreprise -->
+      <section class="step" data-step="field" data-required="1" data-name="entreprise">
+        <span class="kicker"><span class="dot"></span> Votre entreprise</span>
+        <h2>Le nom de votre entreprise ?</h2>
+        <p class="sub">Pour préparer un exemple adapté à votre activité.</p>
+        <input class="field" type="text" inputmode="text" autocomplete="organization"
+               placeholder="Ex : Jardins de l'Anjou" enterkeyhint="next">
+        <div class="error"></div>
+        <div class="row">
+          <button class="btn btn-back" data-back aria-label="Revenir">←</button>
+          <button class="btn btn-primary" data-next>Suivant <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="hint"><kbd>Entrée ↵</kbd> pour continuer</p>
+      </section>
+
+      <!-- 3 · Projet à rendre -->
+      <section class="step" data-step="field" data-required="1" data-name="projet">
+        <span class="kicker"><span class="dot"></span> Le projet</span>
+        <h2>Un chantier qu'on pourrait rendre ?</h2>
+        <p class="sub">Un devis en cours où le client a du mal à se projeter. Quelques mots suffisent.</p>
+        <textarea class="field" enterkeyhint="next"
+                  placeholder="Ex : réaménagement complet d'un jardin, terrasse + plage de piscine, allée en pierre…"></textarea>
+        <div class="error"></div>
+        <div class="row">
+          <button class="btn btn-back" data-back aria-label="Revenir">←</button>
+          <button class="btn btn-primary" data-next>Suivant <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="hint"><kbd>Entrée ↵</kbd> pour continuer · <kbd>Maj+Entrée</kbd> nouvelle ligne</p>
+      </section>
+
+      <!-- 4 · Téléphone -->
+      <section class="step" data-step="field" data-name="telephone">
+        <span class="kicker"><span class="dot"></span> Vous joindre</span>
+        <h2>Votre téléphone <span class="opt">(facultatif)</span></h2>
+        <p class="sub">Le plus simple pour caler les 15 min ensemble.</p>
+        <input class="field" type="tel" inputmode="tel" autocomplete="tel"
+               placeholder="06 12 34 56 78" enterkeyhint="next">
+        <div class="error"></div>
+        <div class="row">
+          <button class="btn btn-back" data-back aria-label="Revenir">←</button>
+          <button class="btn btn-primary" data-next>Suivant <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="hint"><kbd>Entrée ↵</kbd> pour continuer</p>
+      </section>
+
+      <!-- 5 · Message -->
+      <section class="step" data-step="field" data-name="message">
+        <span class="kicker"><span class="dot"></span> Un mot en plus</span>
+        <h2>Quelque chose à préciser ? <span class="opt">(facultatif)</span></h2>
+        <p class="sub">Disponibilités, type de projets, ce que vous voulez tester…</p>
+        <textarea class="field" enterkeyhint="send"
+                  placeholder="Ex : plutôt le matin, surtout des terrasses, envie de voir l'effet sur un gros devis…"></textarea>
+        <div class="error"></div>
+        <div class="row">
+          <button class="btn btn-back" data-back aria-label="Revenir">←</button>
+          <button class="btn btn-primary" data-next>Envoyer <span aria-hidden="true">✓</span></button>
+        </div>
+        <div class="sending" id="sending" style="display:none"><span class="spinner"></span> Envoi en cours…</div>
+        <p class="hint" id="last-hint"><kbd>Entrée ↵</kbd> pour envoyer · <kbd>Maj+Entrée</kbd> nouvelle ligne</p>
+      </section>
+
+      <!-- 6 · Succès -->
+      <section class="step" data-step="done">
+        <div class="check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#04130d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2>Merci, c'est noté !</h2>
+        <p class="sub">On vous recontacte sous 24h ouvrées pour caler les 15 min et voir le rendu sur un de vos chantiers.</p>
+        <div class="crosssell">
+          <p>En attendant, découvrez comment le <strong>rendu avant / après</strong> fait signer vos devis.</p>
+          <a class="btn btn-primary" href="index.html">Voir un rendu <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+  var bar = document.getElementById("bar");
+  var counter = document.getElementById("counter");
+  var current = 0;
+
+  // Indices des écrans "question" pour la barre de progression (on exclut accueil & succès)
+  var questionIndexes = steps
+    .map(function(s,i){ return {i:i, t:s.getAttribute("data-step")}; })
+    .filter(function(o){ return o.t === "field"; })
+    .map(function(o){ return o.i; });
+  var totalQuestions = questionIndexes.length;
+
+  function isField(step){ return step.getAttribute("data-step") === "field"; }
+  function isRequired(step){ return step.getAttribute("data-required") === "1"; }
+  function inputOf(step){ return step.querySelector(".field"); }
+  function errorOf(step){ return step.querySelector(".error"); }
+
+  function updateProgress(){
+    var step = steps[current];
+    var pos = questionIndexes.indexOf(current); // 0-based parmi les questions
+    if(pos >= 0){
+      counter.textContent = (pos + 1) + " / " + totalQuestions;
+      bar.style.width = ((pos) / totalQuestions * 100) + "%";
+    } else if(step.getAttribute("data-step") === "done"){
+      counter.textContent = "Terminé";
+      bar.style.width = "100%";
+    } else {
+      counter.textContent = "";
+      bar.style.width = "0%";
+    }
+  }
+
+  function show(index, focus){
+    if(index < 0 || index >= steps.length) return;
+    steps[current].classList.remove("active");
+    current = index;
+    steps[current].classList.add("active");
+    updateProgress();
+    if(focus){
+      var inp = inputOf(steps[current]);
+      if(inp){ setTimeout(function(){ try{ inp.focus(); }catch(e){} }, 220); }
+    }
+    clearError(steps[current]);
+  }
+
+  function clearError(step){
+    var e = errorOf(step);
+    if(e){ e.classList.remove("show"); e.textContent = ""; }
+  }
+  function showError(step, msg){
+    var e = errorOf(step);
+    if(e){ e.textContent = msg; e.classList.add("show"); }
+    var inp = inputOf(step);
+    if(inp){ try{ inp.focus(); }catch(err){} }
+  }
+
+  function validate(step){
+    if(!isField(step) || !isRequired(step)) return true;
+    var inp = inputOf(step);
+    if(inp && inp.value.trim() === ""){
+      showError(step, "Ce champ est nécessaire pour préparer votre devis.");
+      return false;
+    }
+    return true;
+  }
+
+  function next(){
+    var step = steps[current];
+    if(step.getAttribute("data-step") === "done") return;
+    if(!validate(step)) return;
+    // Dernier champ -> envoi
+    var lastFieldIndex = questionIndexes[questionIndexes.length - 1];
+    if(current === lastFieldIndex){
+      submit();
+      return;
+    }
+    show(current + 1, true);
+  }
+
+  function back(){
+    if(current > 0) show(current - 1, true);
+  }
+
+  // ---- Boutons ----
+  steps.forEach(function(step){
+    var nb = step.querySelector("[data-next]");
+    var bb = step.querySelector("[data-back]");
+    if(nb) nb.addEventListener("click", function(e){ e.preventDefault(); next(); });
+    if(bb) bb.addEventListener("click", function(e){ e.preventDefault(); back(); });
+
+    // Effacer l'erreur dès que l'utilisateur tape
+    var inp = inputOf(step);
+    if(inp) inp.addEventListener("input", function(){ clearError(step); });
+  });
+
+  // ---- Clavier global : Entrée = avancer / Maj+Entrée = nouvelle ligne ----
+  document.addEventListener("keydown", function(e){
+    if(e.key !== "Enter") return;
+    if(e.shiftKey) return; // laisse le retour à la ligne dans les textarea
+    var step = steps[current];
+    if(step.getAttribute("data-step") === "done") return;
+    e.preventDefault();
+    next();
+  });
+
+  // ---- Envoi Web3Forms ----
+  function buildFormData(){
+    var fd = new FormData();
+    fd.append("access_key", "ad88f952-7ed4-48d7-b2aa-082eed0ad704");
+    fd.append("subject", "🖼️ Découverte 15 min — demande de rendu (Nexavyr)");
+    fd.append("from_name", "Formulaire Découverte 15 min Nexavyr");
+    steps.forEach(function(step){
+      if(!isField(step)) return;
+      var name = step.getAttribute("data-name");
+      var inp = inputOf(step);
+      if(name && inp){ fd.append(name, inp.value.trim()); }
+    });
+    return fd;
+  }
+
+  var sending = document.getElementById("sending");
+  var lastHint = document.getElementById("last-hint");
+  var inFlight = false;
+
+  function setSubmitButton(step, disabled){
+    var nb = step.querySelector("[data-next]");
+    if(nb){ nb.disabled = disabled; }
+  }
+
+  function submit(){
+    if(inFlight) return;
+    inFlight = true;
+    var step = steps[current];
+    clearError(step);
+    if(sending) sending.style.display = "flex";
+    if(lastHint) lastHint.style.display = "none";
+    setSubmitButton(step, true);
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: buildFormData()
+    })
+    .then(function(res){ return res.json().catch(function(){ return {success:false}; }); })
+    .then(function(data){
+      if(data && data.success){
+        if(sending) sending.style.display = "none";
+        // Aller à l'écran succès (dernier step)
+        show(steps.length - 1, false);
+      } else {
+        throw new Error("server");
+      }
+    })
+    .catch(function(){
+      inFlight = false;
+      if(sending) sending.style.display = "none";
+      if(lastHint) lastHint.style.display = "flex";
+      setSubmitButton(step, false);
+      showError(step, "L'envoi n'a pas abouti. Vérifiez votre connexion puis réessayez.");
+    });
+  }
+
+  updateProgress();
+
+  // ---------- Fond animé : champ d'étoiles discret ----------
+  var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var canvas = document.getElementById("bg-canvas");
+  if(canvas && canvas.getContext && !prefersReduced){
+    var ctx = canvas.getContext("2d");
+    var stars = [];
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = 0, H = 0, raf = null;
+
+    function resize(){
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + "px"; canvas.style.height = H + "px";
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      var count = Math.round(Math.min(90, (W * H) / 16000));
+      stars = [];
+      for(var i=0;i<count;i++){
+        stars.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: Math.random()*1.4 + 0.3,
+          a: Math.random()*0.6 + 0.15,
+          tw: Math.random()*0.02 + 0.004,
+          dir: Math.random() < .5 ? 1 : -1,
+          vy: Math.random()*0.12 + 0.02,
+          teal: Math.random() < 0.35
+        });
+      }
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<stars.length;i++){
+        var s = stars[i];
+        s.a += s.tw * s.dir;
+        if(s.a > 0.85){ s.a = 0.85; s.dir = -1; }
+        else if(s.a < 0.12){ s.a = 0.12; s.dir = 1; }
+        s.y -= s.vy;
+        if(s.y < -2){ s.y = H + 2; s.x = Math.random()*W; }
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.fillStyle = s.teal
+          ? "rgba(22,214,163," + s.a + ")"
+          : "rgba(234,240,251," + (s.a*0.8) + ")";
+        ctx.fill();
+      }
+      raf = requestAn

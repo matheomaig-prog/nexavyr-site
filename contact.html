@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · Voir le rendu sur un de vos chantiers · Nexavyr</title>
+<meta name="description" content="Laissez vos coordonnées : sous 24h je vous montre l'avant / après sur un de vos vrais chantiers. Sans engagement.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="promo-bar" data-en="💸 Know someone this could help? Introduce them — if they sign, you earn <b>10%</b> of the sale. <a href='contact.html'>Refer someone →</a>">💸 Vous connaissez quelqu'un que ça pourrait intéresser ? Présentez-nous — s'il signe, vous touchez <b>10%</b> de la vente. <a href="contact.html">Mettre en relation →</a></div>
+
+<header>
+  <div class="wrap"><nav>
+    <a class="logo" href="index.html"><img src="logo.svg" alt="Nexavyr — Captez plus, gagnez plus" style="height:26px;display:block"></a>
+    <div class="nav-links">
+      <a href="produit.html" data-en="Product">Produit</a>
+      <a href="preuves.html" data-en="Proof">Preuves</a>
+      <a href="tarifs.html" data-en="Plans">Formules</a>
+      <a href="tarifs.html#securite" data-en="Security">Sécurité</a>
+      <a href="contact.html" class="active" data-en="Contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+33948194074" class="nav-call">📞 09 48 19 40 74</a>
+      <button class="btn btn-gho lang-btn" onclick="nxToggleLang()">🌐 FR</button>
+      <a href="demo.html" class="btn btn-gho" data-en="See a render">Voir un rendu</a>
+      <a href="#form" class="btn btn-pri" data-en="See the render">Voir le rendu</a>
+    </div>
+  </nav></div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap center">
+    <span class="pill"><span class="dot"></span> <span data-en="Free render">Rendu gratuit</span></span>
+    <h1 style="margin-top:18px" data-en="See the render on one of your own projects.">Voyez le rendu sur un de vos propres chantiers.</h1>
+    <p class="lead" style="margin:18px auto 0" data-en="Leave your details: within 24h I show you what the before / after looks like on one of your real projects. No commitment — you just see the effect for yourself.">Laissez vos coordonnées : sous 24h je vous montre ce que donne l'avant / après sur un de vos vrais chantiers. Sans engagement — vous voyez simplement l'effet par vous-même.</p>
+  </div>
+</section>
+
+<!-- PROMESSES + FORM -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="grid g2" style="align-items:start;gap:34px">
+      <div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Realistic render within 24h">Rendu réaliste sous 24h</b><small data-en="The finished garden on your client's own plot">Le jardin fini sur le propre terrain de votre client</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Free render, no commitment">Rendu gratuit, sans engagement</b><small data-en="Send one photo of a real project, see the before / after">Envoyez une photo d'un vrai chantier, voyez l'avant / après</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Nothing to install">Rien à installer</b><small data-en="You send a photo, I do the render for you">Vous envoyez une photo, je fais le rendu à votre place</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Ready to present">Prêt à présenter</b><small data-en="A clean image to put next to your quote">Une image nette à poser à côté de votre devis</small></div></div>
+        <div style="margin-top:26px">
+          <span class="eyebrow" data-en="Or directly">Ou directement</span><br>
+          <a href="https://wa.me/33768825506" class="btn btn-gho" style="margin:6px 6px 0 0">💬 WhatsApp · 07 68 82 55 06</a>
+          <a href="mailto:matheo@nexavyr.tech" class="btn btn-gho" style="margin:6px 0 0 0">✉️ matheo@nexavyr.tech</a>
+        </div>
+      </div>
+
+      <div class="card" id="form">
+        <!-- Formulaire réel : envoie la demande par email via Web3Forms (gratuit). -->
+        <form id="quoteForm" class="grid g2">
+          <input type="hidden" name="access_key" value="ad88f952-7ed4-48d7-b2aa-082eed0ad704">
+          <input type="hidden" name="subject" value="🖼️ Nouvelle demande de rendu — site Nexavyr">
+          <input type="hidden" name="from_name" value="Site Nexavyr">
+          <div class="field"><label data-en="First name *">Prénom *</label><input name="prenom" required></div>
+          <div class="field"><label data-en="Last name *">Nom *</label><input name="nom" required></div>
+          <div class="field full"><label data-en="Work email *">Email professionnel *</label><input type="email" name="email" required></div>
+          <div class="field"><label data-en="Phone">Téléphone</label><input name="telephone"></div>
+          <div class="field"><label data-en="Company name">Nom de l'entreprise</label><input name="entreprise"></div>
+          <div class="field"><label data-en="Activity">Activité</label><select name="metier"><option data-en="Landscaping / garden design">Paysagiste / aménagement de jardin</option><option data-en="Terraces & decks">Terrasses & platelages</option><option data-en="Pool surroundings">Abords de piscine</option><option data-en="Paving / paths">Pavage / allées</option><option data-en="Other outdoor project">Autre projet extérieur</option></select></div>
+          <div class="field"><label data-en="Quotes presented per month">Devis présentés par mois</label><select name="devis_par_mois"><option>&lt; 5</option><option data-en="5 to 15">5 à 15</option><option data-en="15 to 30">15 à 30</option><option>30+</option></select></div>
+          <div class="field full"><label data-en="What interests you?">Qu'est-ce qui vous intéresse ?</label><select name="formule"><option data-en="I don't know yet, advise me">Je ne sais pas encore, conseillez-moi</option><option data-en="One test render">Un rendu test</option><option data-en="Renders on demand (recommended)">Rendus à la demande (recommandé)</option><option data-en="The full pack">Le pack complet</option></select></div>
+          <div class="field full"><label data-en="Referred by whom? (if recommended)">De la part de qui ? (si on vous a recommandé)</label><input name="recommande_par"></div>
+          <div class="field full"><label data-en="Message (optional)">Message (optionnel)</label><textarea name="message" rows="3"></textarea></div>
+          <div class="full"><button class="btn btn-pri" type="submit" style="width:100%" data-en="See the render on one of my projects →">Voir le rendu sur un de mes chantiers →</button></div>
+        </form>
+        <div id="ok" style="display:none;text-align:center;padding:20px">
+          <div style="font-size:2.4rem">✓</div>
+          <b style="font-size:1.1rem" data-en="Thank you, got it!">Merci, c'est noté !</b>
+          <p class="muted" style="margin-top:8px;font-size:.9rem" data-en="We'll get back to you within 24 working hours to show you the render on one of your projects.">On vous recontacte sous 24h ouvrées pour vous montrer le rendu sur un de vos chantiers.</p>
+        </div>
+        <p class="muted" style="font-size:.74rem;margin-top:14px" data-en="By submitting, you agree to be contacted. Your data is encrypted, GDPR-compliant and never resold.">En soumettant, vous acceptez d'être recontacté. Vos données sont chiffrées, conformes RGPD et ne sont jamais revendues.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><img src="logo.svg" alt="Nexavyr" style="height:22px"></div>
+        <p style="color:#16d6a3;font-weight:700;margin:8px 0 0;font-size:.95rem" data-en="Show it. Sign it.">Ils le voient, ils signent.</p>
+        <p style="margin-top:10px;max-width:340px" data-en="The before / after render that makes landscapers' quotes get signed. You send the photo of the bare plot, I send back the finished garden within 24h — ready to present. Made in France.">Le rendu avant / après qui fait signer les devis des paysagistes. Vous envoyez la photo du terrain nu, je vous renvoie le jardin fini sous 24h — prêt à présenter. Made in France.</p>
+      </div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Product">Produit</b>
+        <a href="produit.html" data-en="Solution">La solution</a><br><a href="tarifs.html" data-en="What's included">Ce qui est inclus</a><br><a href="preuves.html" data-en="Proof">Preuves</a><br><a href="montage-chantier.html" data-en="Before / after">Avant / après</a></div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Contact">Contact</b>
+        <a href="https://wa.me/33768825506">💬 WhatsApp · 07 68 82 55 06</a><br><a href="mailto:matheo@nexavyr.tech">matheo@nexavyr.tech</a></div>
+    </div>
+    <div class="foot-bottom"><span data-en="© 2026 Nexavyr · Made in France">© 2026 Nexavyr · Made in France</span><span data-en="● Realistic render · ● Delivered in 24h">● Rendu réaliste · ● Livré sous 24h</span></div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+  document.getElementById('quoteForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const f = e.target;
+    const en = document.documentElement.lang === 'en';
+    if (f.access_key.value.includes('VOTRE_CLE')) {
+      alert(en ? "⚠️ The form isn't connected yet (Web3Forms key missing). Your request was not sent."
+               : "⚠️ Le formulaire n'est pas encore connecté (clé Web3Forms à ajouter). La demande n'a pas été envoyée.");
+      return;
+    }
+    try {
+      const r = await fetch('https://api.web3forms.com/submit', { method:'POST', body:new FormData(f) });
+      if (r.ok) { f.style.display='none'; document.getElementById('ok').style.display='block'; }
+      else alert(en ? "Something went wrong. Try again or call +33 7 68 82 55 06." : "Une erreur est survenue. Réessayez ou appelez le 07 68 82 55 0

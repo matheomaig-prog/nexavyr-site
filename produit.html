@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Suite Paysagiste · Nexavyr</title>
+<meta name="description" content="La Suite Paysagiste Nexavyr : on entre par le rendu qui fait signer vos devis, puis on vous enlève tout ce qui n'est pas planter — relance des devis, appels captés, vitrine, chantiers, administratif, récurrent.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+<style>
+  .mod-grid{grid-template-columns:1fr}
+  .mod{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start}
+  @media(max-width:620px){.mod{grid-template-columns:1fr;gap:12px}}
+  .mod .badge{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;background:linear-gradient(160deg,rgba(22,214,163,.14),rgba(22,214,163,.04));border:1px solid rgba(22,214,163,.28)}
+  .mod.entry{border-color:rgba(245,196,81,.45);background:linear-gradient(160deg,rgba(245,196,81,.07),var(--card))}
+  .mod.entry .badge{background:linear-gradient(160deg,rgba(245,196,81,.16),rgba(245,196,81,.04));border-color:rgba(245,196,81,.4)}
+  .mod h3{font-size:1.22rem;margin:0 0 2px}
+  .mod .fam{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:8px;display:block}
+  .mod .ben{color:var(--acc);font-weight:800;margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="promo-bar" data-en="💸 Know someone this could help? Introduce them — if they sign, you earn <b>10%</b> of the sale. <a href='contact.html'>Refer someone →</a>">💸 Vous connaissez quelqu'un que ça pourrait intéresser ? Présentez-nous — s'il signe, vous touchez <b>10%</b> de la vente. <a href="contact.html">Mettre en relation →</a></div>
+
+<header>
+  <div class="wrap"><nav>
+    <a class="logo" href="index.html"><img src="logo.svg" alt="Nexavyr — Captez plus, gagnez plus" style="height:26px;display:block"></a>
+    <div class="nav-links">
+      <a href="produit.html" class="active" data-en="Product">Produit</a>
+      <a href="preuves.html" data-en="Proof">Preuves</a>
+      <a href="tarifs.html" data-en="Plans">Formules</a>
+      <a href="tarifs.html#securite" data-en="Security">Sécurité</a>
+      <a href="contact.html" data-en="Contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+33948194074" class="nav-call">📞 09 48 19 40 74</a>
+      <button class="btn btn-gho lang-btn" onclick="nxToggleLang()">🌐 FR</button>
+      <a href="demo.html" class="btn btn-gho" data-en="See a render">Voir un rendu</a>
+      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See where to start">Voir par où commencer</a>
+    </div>
+  </nav></div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap center">
+    <span class="pill"><span class="dot"></span> <span data-en="The Nexavyr Landscaper Suite">La Suite Paysagiste Nexavyr</span></span>
+    <h1 style="margin-top:18px" data-en="One suite that takes off your plate everything that isn't planting.">Une suite qui vous enlève tout ce qui n'est pas planter.</h1>
+    <p class="lead" style="margin:18px auto 0" data-en="You enter through the render — the brick that gets your quotes signed. Then, one by one, we take the rest off your hands: dead follow-ups, calls that ring out, admin that piles up. One problem, one brick that kills it. You start where it pays off fastest.">Vous entrez par le rendu — la brique qui fait signer vos devis. Puis, une par une, on vous décharge du reste : les relances qui meurent, les appels qu'on rate, l'administratif qui s'empile. Un problème, une brique qui le tue. Vous commencez là où ça rapporte le plus vite.</p>
+  </div>
+</section>
+
+<!-- LE RENDU EN IMAGE -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div style="max-width:900px;margin:0 auto;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45)">
+      <img src="rendu-avant-apres.png" alt="Rendu avant / après d'un jardin : terrain nu transformé en aménagement paysager réaliste (terrasse, allée en pierre, massifs)" style="width:100%;display:block" loading="lazy">
+    </div>
+    <p class="center muted" style="font-size:.82rem;margin-top:14px" data-en="Where it all starts: on the left the bare plot, on the right the finished garden.">Là où tout commence : à gauche le terrain nu, à droite le jardin fini.</p>
+  </div>
+</section>
+
+<!-- LE PRINCIPE -->
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="center" style="max-width:760px;margin:0 auto 10px">
+      <span class="eyebrow" data-en="How the suite works">Comment marche la suite</span>
+      <h2 data-en="We enter through the render. We upsell the rest once you're happy.">On entre par le rendu. On ajoute le reste quand vous êtes content.</h2>
+      <p class="muted" style="margin-top:14px" data-en="No giant tool to swallow whole. The render gets you signing right away — that's the door in. Once it delivers, we plug in the next brick: whichever problem is costing you the most, right now. You stay in control, you never pay for what you don't use yet.">Pas d'usine à gaz à avaler d'un coup. Le rendu vous fait signer tout de suite — c'est la porte d'entrée. Une fois qu'il fait ses preuves, on branche la brique suivante : celle qui vous coûte le plus, maintenant. Vous gardez la main, vous ne payez jamais ce que vous n'utilisez pas encore.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LES 7 MODULES -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:40px">
+      <span class="eyebrow" data-en="The bricks">Les briques</span>
+      <h2 data-en="One brick per problem. Yours to switch on when you're ready.">Une brique par problème. À allumer quand vous êtes prêt.</h2>
+    </div>
+    <div class="grid mod-grid" style="max-width:940px;margin:0 auto;gap:18px">
+
+      <!-- M0 -->
+      <div class="card mod entry reveal">
+        <div class="badge">🖼️</div>
+        <div>
+          <span class="fam" style="color:var(--gold)" data-en="⭐ The way in · signing your quotes">⭐ La porte d'entrée · signer vos devis</span>
+          <h3 data-en="The Render">Le Rendu</h3>
+          <p class="muted" style="font-size:.94rem" data-en="Your client can't picture a finished garden from a bare plot — so the €10,000+ quote dies in « I'll think about it ». Kills the deepest pain of the trade: the client who can't see it doesn't sign.">Votre client n'imagine pas un jardin fini à partir d'un terrain nu — alors le devis à 10 000 €+ meurt en « je vais réfléchir ». Tue la douleur la plus profonde du métier : le client qui ne voit pas ne signe pas.</p>
+          <div class="ben" data-en="→ One photo of the bare plot, back within 24h the finished garden he can finally see — and sign.">→ Une photo du terrain nu, le jardin fini renvoyé sous 24h qu'il voit enfin — et signe.</div>
+        </div>
+      </div>
+
+      <!-- M1 -->
+      <div class="card mod reveal">
+        <div class="badge">📄</div>
+        <div>
+          <span class="fam" data-en="→ And then · closing your quotes">→ Et ensuite · closer vos devis</span>
+          <h3 data-en="Quotes & Follow-up">Devis & Relance</h3>
+          <p class="muted" style="font-size:.94rem" data-en="Quotes take forever to build, get followed up badly, and prospects live in your head. « Later » quotes die by the dozen. Kills the quotes that go quiet and the prospects you lose track of.">Les devis prennent une plombe à monter, se relancent mal, et les prospects vivent dans votre tête. Les devis « plus tard » meurent par dizaines. Tue les devis qui s'éteignent et les prospects qu'on perd de vue.</p>
+          <div class="ben" data-en="→ Quotes built faster, followed up on their own, every prospect kept in one place.">→ Des devis montés plus vite, relancés tout seuls, chaque prospect gardé au même endroit.</div>
+        </div>
+      </div>
+
+      <!-- M2 -->
+      <div class="card mod reveal">
+        <div class="badge">📞</div>
+        <div>
+          <span class="fam" data-en="→ And then · never miss a lead">→ Et ensuite · ne plus rater un lead</span>
+          <h3 data-en="Never-Miss Front Desk">Le Standard qui ne rate rien</h3>
+          <p class="muted" style="margin:0;font-size:.94rem" data-en="You're on site, hands in the dirt — the phone rings, the email waits, the form sits there. The prospect gets no answer and calls your competitor. Kills the leads that slip away while your hands are busy.">Vous êtes sur chantier, les mains dans la terre — le téléphone sonne, le mail attend, le formulaire dort. Le prospect n'a personne et appelle le concurrent. Tue les leads qui filent pendant que vos mains travaillent.</p>
+          <div class="ben" data-en="→ An assistant that answers your calls, emails and forms when you can't — the lead is captured, not lost.">→ Un assistant qui répond à vos appels, mails et formulaires quand vous ne pouvez pas — le lead est capté, pas perdu.</div>
+        </div>
+      </div>
+
+      <!-- M3 -->
+      <div class="card mod reveal">
+        <div class="badge">🌐</div>
+        <div>
+          <span class="fam" data-en="→ And then · getting found + proof">→ Et ensuite · être trouvé + la preuve</span>
+          <h3 data-en="Showcase & Reviews">Vitrine & Avis</h3>
+          <p class="muted" style="margin:0;font-size:.94rem" data-en="No online proof, few reviews, an old site. When a client hesitates between two landscapers, the photos and the reviews decide — and yours are missing. Kills the invisibility that sends the job next door.">Pas de preuve en ligne, peu d'avis, un site daté. Quand un client hésite entre deux paysagistes, ce sont les photos et les avis qui tranchent — et les vôtres manquent. Tue l'invisibilité qui envoie le chantier chez le voisin.</p>
+          <div class="ben" data-en="→ Your before / after renders feed a clean site, your Google listing and your reviews — the proof that gets you chosen locally.">→ Vos avant / après nourrissent un site propre, votre fiche Google et vos avis — la preuve qui vous fait choisir en local.</div>
+        </div>
+      </div>
+
+      <!-- M4 -->
+      <div class="card mod reveal">
+        <div class="badge">📅</div>
+        <div>
+          <span class="fam" data-en="→ And then · running your sites">→ Et ensuite · gérer vos chantiers</span>
+          <h3 data-en="Sites & Planning">Chantiers & Planning</h3>
+          <p class="muted" style="margin:0;font-size:.94rem" data-en="Crews, sites, and rain that pushes everything back — juggled in your head. One double-booking or a wet week and the whole schedule falls apart. Kills the planning chaos and the « is it moving? » calls.">Les équipes, les chantiers, la pluie qui décale tout — jonglés dans votre tête. Un double-booking ou une semaine humide et tout le planning s'écroule. Tue le chaos du planning et les appels « ça avance ? ».</p>
+          <div class="ben" data-en="→ Crew planning, weather reshuffles handled, progress photos sent to the client on their own.">→ Le planning des équipes, la météo qui replanifie, les photos d'avancement envoyées seules au client.</div>
+        </div>
+      </div>
+
+      <!-- M5 -->
+      <div class="card mod reveal">
+        <div class="badge">🗂️</div>
+        <div>
+          <span class="fam" data-en="→ And then · reclaiming your evenings">→ Et ensuite · récupérer vos soirées</span>
+          <h3 data-en="Admin & Accounts">Administratif & Compta</h3>
+          <p class="muted" style="margin:0;font-size:.94rem" data-en="Emails to sort, supplier invoices to chase down, unpaid bills to reclaim, margins you never really track. Hours a week stolen after the site closes. Kills the paperwork that eats your evenings.">Les mails à trier, les factures fournisseurs à courir après, les impayés à relancer, les marges qu'on ne suit jamais vraiment. Des heures par semaine volées une fois le chantier fermé. Tue la paperasse qui bouffe vos soirées.</p>
+          <div class="ben" data-en="→ Emails sorted, invoices filed for your accountant, billing and payment reminders handled — your evenings back.">→ Les mails triés, les factures rangées pour votre comptable, la facturation et les relances d'impayés gérées — vos soirées récupérées.</div>
+        </div>
+      </div>
+
+      <!-- M6 -->
+      <div class="card mod reveal">
+        <div class="badge">🔁</div>
+        <div>
+          <span class="fam" data-en="→ And then · the recurring goldmine">→ Et ensuite · l'or du récurrent</span>
+          <h3 data-en="Recurring & Upsell">Récurrent & Upsell</h3>
+          <p class="muted" style="margin:0;font-size:.94rem" data-en="Maintenance contracts sold badly and tracked worse, phase-2 projects never pitched. The steadiest revenue in the trade, walking out the door. Kills the recurring money you let slip.">Les contrats d'entretien mal vendus et mal suivis, les projets « phase 2 » jamais proposés. Le revenu le plus régulier du métier, qui sort par la porte. Tue le récurrent que vous laissez filer.</p>
+          <div class="ben" data-en="→ Maintenance contracts sold and followed up, seasonal upsells surfaced at the right time — a steady base that grows.">→ Les contrats d'entretien vendus et suivis, les upsells saisonniers proposés au bon moment — une base régulière qui grandit.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI ON ENTRE PAR LE RENDU -->
+<section>
+  <div class="wrap">
+    <div class="center" style="max-width:760px;margin:0 auto 40px">
+      <span class="eyebrow" data-en="Why we start with the render">Pourquoi on commence par le rendu</span>
+      <h2 data-en="A devis is a table of numbers. A garden is a coup de cœur.">Un devis, c'est un tableau de chiffres. Un jardin, c'est un coup de cœur.</h2>
+      <p class="muted" style="margin-top:14px" data-en="Three quotes on the table. Only one shows the finished garden. Guess which one he signs. That's why the render is the way in: it's the brick that brings money back the fastest — and it makes every other brick easier to sell, because you've already earned the trust.">Trois devis sur la table. Un seul montre le jardin fini. Devinez lequel il signe. C'est pour ça que le rendu est la porte d'entrée : c'est la brique qui ramène de l'argent le plus vite — et elle rend toutes les autres plus faciles à ajouter, parce que la confiance est déjà là.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card reveal"><b data-en="01 · You photograph the plot">01 · Vous photographiez le terrain</b><br><span class="muted" style="font-size:.88rem" data-en="A simple phone photo of the bare space.">Une simple photo du terrain nu, au téléphone.</span></div>
+      <div class="card reveal"><b data-en="02 · I make the render">02 · Je fais le rendu</b><br><span class="muted" style="font-size:.88rem" data-en="The finished, realistic result of their project, within 24h.">Le rendu fini et réaliste de son projet, sous 24h.</span></div>
+      <div class="card reveal"><b data-en="03 · You show the client">03 · Vous le montrez au client</b><br><span class="muted" style="font-size:.88rem" data-en="On the spot, on your phone or next to the quote.">Sur place, sur le téléphone ou à côté du devis.</span></div>
+      <div class="card reveal"><b data-en="04 · They picture it, they sign">04 · Il se projette, il signe</b><br><span class="muted" style="font-size:.88rem" data-en="Seeing the result removes the doubt.">Voir le résultat enlève le doute.</span></div>
+    </div>
+    <div class="center" style="margin-top:36px">
+      <a href="demo.html" class="btn btn-pri" data-en="🖼️ See a render in action">🖼️ Voir un rendu en action</a>
+      <div class="muted" style="font-size:.82rem;margin-top:10px" data-en="Free · you see the before / after for real.">Gratuit · vous voyez l'avant / après pour de vrai.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE LE RENDU MONTRE -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center" style="max-width:680px;margin:0 auto 34px">
+      <span class="eyebrow" data-en="Inside the render">Dans le rendu</span>
+      <h2 data-en="Everything your client couldn't picture — made visible.">Tout ce que votre client n'arrivait pas à imaginer — rendu visible.</h2>
+    </div>
+    <div class="grid g4">
+      <div class="card chan reveal"><div class="ic">🪵</div><h3 data-en="Terrace">Terrasse</h3><p class="muted" style="font-size:.9rem" data-en="The right material, to scale, in the right spot on their plot.">Le bon matériau, à l'échelle, au bon endroit sur son terrain.</p><small data-en="Realistic render">Rendu réaliste</small></div>
+      <div class="card chan reveal"><div class="ic">🧱</div><h3 data-en="Path &amp; paving">Allée & pavage</h3><p class="muted" style="font-size:.9rem" data-en="The route, the materials, the finish — everything visible.">Le tracé, les matériaux, la finition — tout devient visible.</p><small data-en="Realistic render">Rendu réaliste</small></div>
+      <div class="card chan reveal"><div class="ic">🌷</div><h3 data-en="Planting &amp; beds">Plantations & massifs</h3><p class="muted" style="font-size:.9rem" data-en="Lawn, beds, trees: the mature garden, not a muddy plot.">Pelouse, massifs, arbres : le jardin mûr, pas un terrain boueux.</p><small data-en="Realistic render">Rendu réaliste</small></div>
+      <div class="card chan reveal"><div class="ic">💡</div><h3 data-en="Lighting">Éclairage</h3><p class="muted" style="font-size:.9rem" data-en="The garden at dusk — the extra clients cut when they can't picture it.">Le jardin au crépuscule — l'option que les clients rognent sans rendu.</p><small data-en="Option">Option</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- LA VISION -->
+<section>
+  <div class="wrap" style="max-width:820px">
+    <div class="center">
+      <span class="eyebrow" data-en="The vision">La vision</span>
+      <h2 data-en="We take off your plate everything that isn't planting.">On vous enlève tout ce qui n'est pas planter.</h2>
+      <p class="muted" style="margin-top:16px;font-size:1.08rem" data-en="In time, your quotes follow themselves up, the phone never gets missed, the admin files itself. We start with what pays off fastest — getting your quotes signed — and we add the rest at your pace. Your job stays yours: designing and planting gardens. The rest, we carry.">À terme, les devis se relancent seuls, le téléphone ne se rate plus, l'admin se range toute seule. On commence par ce qui rapporte le plus vite — faire signer vos devis — et on ajoute le reste à votre rythme. Votre métier reste le vôtre : dessiner et planter des jardins. Le reste, on le porte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBLE -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:40px">
+      <span class="eyebrow" data-en="Built for">Conçu pour</span>
+      <h2 data-en="Landscapers &amp; outdoor-design pros.">Les paysagistes & pros de l'aménagement extérieur.</h2>
+      <p class="muted" style="margin-top:14px;max-width:640px;margin-left:auto;margin-right:auto" data-en="Every outdoor project your client struggles to picture is a render worth making. Maine-et-Loire (49) and around.">Tout projet extérieur que votre client a du mal à imaginer, c'est un rendu à faire. Maine-et-Loire (49) et alentours.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal" style="display:flex;align-items:center;gap:12px;font-weight:600"><span style="font-size:1.4rem">🌳</span> <span data-en="Garden design">Aménagement de jardin</span></div>
+      <div class="card reveal" style="display:flex;align-items:center;gap:12px;font-weight:600"><span style="font-size:1.4rem">🪵</span> <span data-en="Terraces & decks">Terrasses & platelages</span></div>
+      <div class="card reveal" style="display:flex;align-items:center;gap:12px;font-weight:600"><span style="font-size:1.4rem">🏊</span> <span data-en="Pool surroundings">Abords de piscine</span></div>
+      <div class="card reveal" style="display:flex;align-items:center;gap:12px;font-weight:600"><span style="font-size:1.4rem">🧱</span> <span data-en="Paths & paving">Allées & pavage</span></div>
+      <div class="card reveal" style="display:flex;align-items:center;gap:12px;font-weight:600"><span style="font-size:1.4rem">🌷</span> <span data-en="Planting & beds">Plantations & massifs</span></div>
+      <div class="card reveal" style="display:flex;align-items:center;gap:12px;font-weight:600"><span style="font-size:1.4rem">💡</span> <span data-en="Garden lighting">Éclairage extérieur</span></div>
+      <div class="card reveal" style="display:flex;align-items:center;gap:12px;font-weight:600;border-style:dashed"><span style="font-size:1.4rem">➕</span> <span data-en="Another outdoor project? Send the photo">Autre projet extérieur ? Envoyez la photo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="wrap center">
+    <h2 data-en="Start with the render. Add the rest when you're ready.">Commencez par le rendu. Ajoutez le reste quand vous êtes prêt.</h2>
+    <p class="muted" style="margin:14px 0 24px" data-en="Free render on one of your real projects, delivered within 24h. We show you where to start — no commitment.">Rendu gratuit sur un de vos vrais chantiers, livré sous 24h. On vous montre par où commencer — sans engagement.</p>
+    <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See where to start — 15 min">Voir par où commencer — 15 min</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><img src="logo.svg" alt="Nexavyr" style="height:22px"></div>
+        <p style="color:#16d6a3;font-weight:700;margin:8px 0 0;font-size:.95rem" data-en="Show it. Sign it.">Ils le voient, ils signent.</p>
+        <p style="margin-top:10px;max-width:340px" data-en="The Nexavyr Landscaper Suite: we enter through the render that gets your quotes signed, then take off your plate everything that isn't planting. Made in France.">La Suite Paysagiste Nexavyr : on entre par le rendu qui fait signer vos devis, puis on vous enlève tout ce qui n'est pas planter. Made in France.</p>
+      </div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Product">Produit</b>
+        <a href="produit.html" data-en="The Suite">La Suite</a><br><a href="index.html#solution-complete" data-en="The complete solution">La solution complète</a><br><a href="demo.html" data-en="See a render">Voir un rendu</a><br><a href="tarifs.html" data-en="What's included">Ce qui est inclus</a></div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Contact">Contact</b>
+        <a href="https://wa.me/33768825506">💬 WhatsApp · 07 68 82 55 06</a><br><a href="mailto:matheo@nexavyr.tech">matheo@nexavyr.tech</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span data-en="© 2026 Nexavyr · Made in France">© 2026 Nexavyr · Made in France</span>
+      <span data-en="● The render that signs · ● Then the whole suite">● Le rendu qui fait signer · ● Puis toute la suite</span>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.12});
+      els.forEach(function(el){io.observe(el);});
+    } else { els.forEach(function(el){el.classList.add('in');}); }
+    setTimeout(function(){ if(!document.querySelector('.reveal.in')){ els.forEach(function(el){el.classList.add('in');}); } },1600);
+  })();
+</script>
+</body>
+</html>

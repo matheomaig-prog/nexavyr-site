@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+<title>Démo · Voyez un rendu avant / après · Nexavyr</title>
+<meta name="description" content="Voyez ce que donne le rendu avant / après : la photo d'un terrain nu transformée en jardin fini réaliste. Demandez le rendu sur un de vos propres chantiers, gratuitement.">
+<meta property="og:title" content="Voyez le rendu avant / après — le jardin fini avant les travaux">
+<meta property="og:description" content="La preuve qui vaut mille arguments : la photo du terrain nu, puis le jardin fini. Rendu gratuit sur un de vos chantiers.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ===== DÉMO LIVE — styles spécifiques ===== */
+  .demo-hero{padding:60px 0 30px;background:radial-gradient(1100px 560px at 70% -10%,rgba(22,214,163,.16),transparent 60%)}
+  .live-badge{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);border:1px solid rgba(22,214,163,.35);background:rgba(22,214,163,.08);padding:8px 16px;border-radius:999px}
+  .live-badge .lblink{width:9px;height:9px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(22,214,163,.7);animation:lpulse 1.6s infinite}
+  @keyframes lpulse{0%{box-shadow:0 0 0 0 rgba(22,214,163,.6)}70%{box-shadow:0 0 0 14px rgba(22,214,163,0)}100%{box-shadow:0 0 0 0 rgba(22,214,163,0)}}
+
+  /* call card */
+  .call-card{max-width:520px;margin:30px auto 0;background:linear-gradient(160deg,#13203a,#0b1322);border:1px solid var(--line);border-radius:26px;padding:34px 30px;box-shadow:0 40px 90px rgba(0,0,0,.5);text-align:center}
+  .call-ring{width:104px;height:104px;margin:0 auto 18px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:2.6rem;color:#04231b;position:relative}
+  .call-ring::before,.call-ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(22,214,163,.5);animation:ring 2.4s infinite}
+  .call-ring::after{animation-delay:1.2s}
+  @keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+  .call-num{font-size:2rem;font-weight:900;letter-spacing:-.02em;margin:6px 0 2px}
+  .call-num a{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .call-sub{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+  .call-soon{font-size:1.15rem;font-weight:800;color:var(--gold);margin:6px 0}
+
+  .demo-steps{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.demo-steps{grid-template-columns:1fr}}
+  .dstep{text-align:center;padding:26px}
+  .dstep .big{width:54px;height:54px;margin:0 auto 14px;border-radius:14px;background:rgba(22,214,163,.1);border:1px solid rgba(22,214,163,.3);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+  .dstep h3{font-size:1.08rem;margin-bottom:6px}
+
+  /* scenarios */
+  .scn-grid{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.scn-grid{grid-template-columns:1fr}}
+  .scn{cursor:pointer;transition:.2s;border:1px solid var(--line)}
+  .scn:hover{border-color:var(--acc);transform:translateY(-3px)}
+  .scn.active{border-color:var(--acc);background:linear-gradient(160deg,rgba(22,214,163,.09),var(--card))}
+  .scn .ic{font-size:1.7rem}
+  .scn h3{font-size:1.06rem;margin:8px 0 4px}
+  .scn p{color:var(--muted);font-size:.86rem}
+  .scn .say{margin-top:14px;padding:12px 14px;border-radius:11px;background:rgba(255,255,255,.03);border:1px dashed var(--line);font-size:.86rem;color:var(--txt)}
+  .scn .say b{color:var(--acc);display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+
+  /* langues */
+  .lang-box{max-width:720px;margin:0 auto;background:linear-gradient(160deg,#13203a,#0b1322);border:1px solid var(--line);border-radius:22px;padding:30px}
+  .lang-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:22px}
+  .lchip{cursor:pointer;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;padding:9px 16px;font-weight:700;font-size:.88rem;transition:.18s;display:flex;align-items:center;gap:8px}
+  .lchip:hover{border-color:var(--acc)}
+  .lchip.active{background:var(--grad);color:#04231b;border-color:transparent}
+  .lang-out{text-align:center;min-height:74px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px}
+  .lang-out .phrase{font-size:1.25rem;font-weight:700;line-height:1.3}
+  .lang-out .tr{color:var(--dim);font-size:.84rem}
+
+  /* options toggles */
+  .opt-grid{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.opt-grid{grid-template-columns:1fr}}
+  .otog{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--card);cursor:pointer;transition:.18s}
+  .otog:hover{border-color:var(--acc)}
+  .otog.on{border-color:rgba(22,214,163,.5);background:linear-gradient(160deg,rgba(22,214,163,.08),var(--card))}
+  .otog .sw{width:44px;height:26px;border-radius:999px;background:#26324d;position:relative;flex-shrink:0;transition:.2s}
+  .otog .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+  .otog.on .sw{background:var(--acc)}
+  .otog.on .sw::after{left:21px}
+  .otog .ic{font-size:1.3rem}
+  .otog b{font-size:.95rem;display:block}
+  .otog small{color:var(--muted);font-size:.8rem}
+</style>
+</head>
+<body>
+
+<div class="promo-bar" data-en="💸 Know someone this could help? Introduce them — if they sign, you earn <b>10%</b> of the sale. <a href='contact.html'>Refer someone →</a>">💸 Vous connaissez quelqu'un que ça pourrait intéresser ? Présentez-nous — s'il signe, vous touchez <b>10%</b> de la vente. <a href="contact.html">Mettre en relation →</a></div>
+
+<header>
+  <div class="wrap"><nav>
+    <a class="logo" href="index.html"><img src="logo.svg" alt="Nexavyr — Captez plus, gagnez plus" style="height:26px;display:block"></a>
+    <div class="nav-links">
+      <a href="produit.html" data-en="Product">Produit</a>
+      <a href="preuves.html" data-en="Proof">Preuves</a>
+      <a href="tarifs.html" data-en="Plans">Formules</a>
+      <a href="tarifs.html#securite" data-en="Security">Sécurité</a>
+      <a href="contact.html" data-en="Contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+33948194074" class="nav-call">📞 09 48 19 40 74</a>
+      <button class="btn btn-gho lang-btn" onclick="nxToggleLang()">🌐 FR</button>
+      <a href="demo.html" class="btn btn-gho active" data-en="See a render">Voir un rendu</a>
+      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See the render">Voir le rendu</a>
+    </div>
+  </nav></div>
+</header>
+
+<!-- HERO -->
+<section class="demo-hero" id="voir">
+  <div class="wrap center">
+    <span class="live-badge"><span class="lblink"></span> <span data-en="Render · delivered in 24h">Rendu · livré sous 24h</span></span>
+    <h1 style="margin:20px auto 0;max-width:860px" data-en="Don't take our word for it. <em style='font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent'>Look, and picture it.</em>">Ne nous croyez pas sur parole. <em style="font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Regardez, et projetez-vous.</em></h1>
+    <p class="lead" style="margin:18px auto 0;text-align:center" data-en="Same plot, same house. On the left, the bare plot your client sees today. On the right, their finished garden. That's exactly what turns « I'll think about it » into a signature. <strong>Want to see it on one of your own projects? It's free.</strong>">Même terrain, même maison. À gauche, le terrain nu que votre client voit aujourd'hui. À droite, son jardin fini. C'est exactement ça qui transforme un « je vais réfléchir » en signature. <strong>Envie de le voir sur un de vos propres chantiers ? C'est gratuit.</strong></p>
+
+    <div style="max-width:920px;margin:30px auto 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+      <img src="rendu-avant-apres.png" alt="Rendu avant / après d'un jardin : terrain nu transformé en aménagement paysager réaliste (terrasse, allée en pierre, massifs)" style="width:100%;display:block">
+    </div>
+    <p class="muted" style="font-size:.82rem;margin-top:14px" data-en="A real render. On the left the bare plot, on the right the finished garden — terrace, path, planted beds, lighting.">Un vrai rendu. À gauche le terrain nu, à droite le jardin fini — terrasse, allée, massifs, éclairage.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px">
+      <a href="#comment" class="btn btn-gho" data-en="How it's made ↓">Comment c'est fait ↓</a>
+      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See the render on one of my projects →">Voir le rendu sur un de mes chantiers →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3 STEPS -->
+<section id="comment" style="padding-top:30px">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:38px">
+      <span class="eyebrow" data-en="In 3 steps">En 3 étapes</span>
+      <h2 data-en="Getting your render is dead simple.">Obtenir votre rendu, c'est tout simple.</h2>
+    </div>
+    <div class="grid demo-steps">
+      <div class="card dstep reveal"><div class="big">①</div><h3 data-en="You send the photo">Vous envoyez la photo</h3><p class="muted" data-en="A simple photo of the bare plot, taken with your phone, plus a couple of words on the project you're pitching.">Une simple photo du terrain nu, prise au téléphone, avec deux mots sur le projet que vous proposez.</p></div>
+      <div class="card dstep reveal"><div class="big">②</div><h3 data-en="I make the render">Je fais le rendu</h3><p class="muted" data-en="Within 24h you get the before / after: the same plot, the finished garden — terrace, path, planted beds, lighting.">Sous 24h vous recevez l'avant / après : le même terrain, le jardin fini — terrasse, allée, massifs, éclairage.</p></div>
+      <div class="card dstep reveal"><div class="big">③</div><h3 data-en="You present, they sign">Vous présentez, il signe</h3><p class="muted" data-en="You put the render next to your quote. Your client finally sees the result — and signs.">Vous posez le rendu à côté de votre devis. Votre client voit enfin le résultat — et signe.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXEMPLES DE PROJETS -->
+<section id="exemples" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center" style="max-width:720px;margin:0 auto 40px">
+      <span class="eyebrow" data-en="What can be rendered">Ce qu'on peut rendre</span>
+      <h2 data-en="Any outdoor project your client struggles to picture.">Tout projet extérieur que votre client a du mal à imaginer.</h2>
+      <p class="muted" style="margin-top:14px" data-en="Terrace, path, planted beds, pool surround, lighting — you describe the project, I show the finished result on your client's own plot.">Terrasse, allée, massifs, abords de piscine, éclairage — vous décrivez le projet, je montre le résultat fini sur le propre terrain de votre client.</p>
+    </div>
+    <div class="grid scn-grid">
+      <div class="card scn">
+        <div class="ic">🌳</div><h3 data-en="Full-garden makeover">Réaménagement complet</h3>
+        <p data-en="From a bare, muddy plot to a designed garden: lawn, beds, trees, and clear spaces.">D'un terrain nu et boueux à un jardin dessiné : pelouse, massifs, arbres, espaces bien lisibles.</p>
+        <div class="say"><b data-en="On the render">Sur le rendu</b><span data-en="The client sees the whole garden, finished, on their own plot.">Le client voit tout le jardin, fini, sur son propre terrain.</span></div>
+      </div>
+      <div class="card scn">
+        <div class="ic">🪵</div><h3 data-en="Terrace + pool deck">Terrasse + plage de piscine</h3>
+        <p data-en="The volumes around the pool, the deck material, the layout — the parts hardest to imagine on paper.">Les volumes autour de la piscine, le matériau de la plage, l'agencement — le plus dur à imaginer sur papier.</p>
+        <div class="say"><b data-en="On the render">Sur le rendu</b><span data-en="The finished deck, to scale, so the doubt disappears.">La plage finie, à l'échelle, pour que le doute disparaisse.</span></div>
+      </div>
+      <div class="card scn">
+        <div class="ic">💡</div><h3 data-en="Lighting &amp; ambiance">Éclairage & ambiance</h3>
+        <p data-en="The lit garden in the evening: the extra that clients cut when they can't picture it.">Le jardin éclairé le soir : l'option que les clients rognent quand ils n'arrivent pas à se projeter.</p>
+        <div class="say"><b data-en="On the render">Sur le rendu</b><span data-en="Seen lit up, they keep it — and the ticket goes up.">Vu éclairé, ils la gardent — et le panier monte.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI LE RENDU EST HONNETE -->
+<section>
+  <div class="wrap">
+    <div class="center" style="max-width:720px;margin:0 auto 38px">
+      <span class="eyebrow" data-en="Built for you">Fait pour vous</span>
+      <h2 data-en="Everything your render includes.">Tout ce que votre rendu comprend.</h2>
+      <p class="muted" style="margin-top:14px" data-en="Not a generic 3D catalogue: the render is built on your client's actual plot and the project YOU describe. Nothing to install, nothing to learn — you send a photo, I do the rest.">Pas un catalogue 3D générique : le rendu part du vrai terrain de votre client et du projet que VOUS décrivez. Rien à installer, rien à apprendre — vous envoyez une photo, je fais le reste.</p>
+    </div>
+    <div class="grid opt-grid" style="max-width:880px;margin:0 auto">
+      <div class="otog" style="cursor:default"><span style="color:var(--acc);font-weight:900;font-size:1.15rem">✓</span><div class="ic">📸</div><div><b data-en="Based on the real plot">Basé sur le vrai terrain</b><small data-en="Their house, their view, their boundaries.">Sa maison, sa vue, ses limites.</small></div></div>
+      <div class="otog" style="cursor:default"><span style="color:var(--acc);font-weight:900;font-size:1.15rem">✓</span><div class="ic">🌿</div><div><b data-en="Your project, your materials">Votre projet, vos matériaux</b><small data-en="Terrace, path, beds — exactly as you plan to build it.">Terrasse, allée, massifs — tel que vous comptez le réaliser.</small></div></div>
+      <div class="otog" style="cursor:default"><span style="color:var(--acc);font-weight:900;font-size:1.15rem">✓</span><div class="ic">💡</div><div><b data-en="Lighting &amp; ambiance">Éclairage & ambiance</b><small data-en="The garden shown at its best.">Le jardin sous son meilleur jour.</small></div></div>
+      <div class="otog" style="cursor:default"><span style="color:var(--acc);font-weight:900;font-size:1.15rem">✓</span><div class="ic">⏱️</div><div><b data-en="Delivered in 24h">Livré sous 24h</b><small data-en="In time for your quote meeting.">À temps pour votre RDV de devis.</small></div></div>
+      <div class="otog" style="cursor:default"><span style="color:var(--acc);font-weight:900;font-size:1.15rem">✓</span><div class="ic">🔁</div><div><b data-en="Adjustments possible">Ajustements possibles</b><small data-en="The client wants a change? I turn around a new version.">Le client veut une modif ? Je renvoie une version corrigée.</small></div></div>
+      <div class="otog" style="cursor:default"><span style="color:var(--acc);font-weight:900;font-size:1.15rem">✓</span><div class="ic">✍️</div><div><b data-en="Ready to present">Prêt à présenter</b><small data-en="A clean image to hand your client with the quote.">Une image nette à remettre au client avec le devis.</small></div></div>
+    </div>
+    <div class="center" style="margin-top:30px">
+      <a href="tarifs.html" class="btn btn-gho" data-en="See what's included →">Voir ce qui est inclus →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PREUVE = RENDU REEL -->
+<section>
+  <div class="wrap center" style="max-width:680px">
+    <span class="eyebrow" data-en="The real proof">La vraie preuve</span>
+    <h2 data-en="No generic mock-ups. The proof is the render on YOUR plot.">Pas de maquettes génériques. La preuve, c'est le rendu sur VOTRE terrain.</h2>
+    <p class="muted" style="margin-top:14px" data-en="Rather than show you someone else's garden, we'd rather make the render on one of your real projects. Send me a photo of a bare plot — you'll see the before / after for yourself.">Plutôt que de vous montrer le jardin de quelqu'un d'autre, on préfère faire le rendu sur un de vos vrais chantiers. Envoyez-moi une photo d'un terrain nu — vous verrez l'avant / après par vous-même.</p>
+    <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" style="margin-top:18px" data-en="🖼️ See the render on one of my projects">🖼️ Voir le rendu sur un de mes chantiers</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--bg2)">
+  <div class="wrap center">
+    <h2 data-en="Convinced? Let's make the render on one of your quotes.">Convaincu ? On fait le rendu sur un de vos devis.</h2>
+    <p class="muted" style="margin:14px 0 24px" data-en="Free render on one of your real projects, delivered within 24h. You see the effect on your client before you decide anything.">Rendu gratuit sur un de vos vrais chantiers, livré sous 24h. Vous voyez l'effet sur votre client avant de décider quoi que ce soit.</p>
+    <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See the render on one of my projects — 15 min">Voir le rendu sur un de mes chantiers — 15 min</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><img src="logo.svg" alt="Nexavyr" style="height:22px"></div>
+        <p style="color:#16d6a3;font-weight:700;margin:8px 0 0;font-size:.95rem" data-en="Show it. Sign it.">Ils le voient, ils signent.</p>
+        <p style="margin-top:10px;max-width:340px" data-en="The before / after render that makes landscapers' quotes get signed. You send the photo of the bare plot, I send back the finished garden within 24h — ready to present. Made in France.">Le rendu avant / après qui fait signer les devis des paysagistes. Vous envoyez la photo du terrain nu, je vous renvoie le jardin fini sous 24h — prêt à présenter. Made in France.</p>
+      </div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Product">Produit</b>
+        <a href="produit.html" data-en="Solution">La solution</a><br><a href="demo.html" data-en="See a render">Voir un rendu</a><br><a href="tarifs.html" data-en="What's included">Ce qui est inclus</a><br><a href="preuves.html" data-en="Proof">Preuves</a></div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Contact">Contact</b>
+        <a href="https://wa.me/33768825506">💬 WhatsApp · 07 68 82 55 06</a><br><a href="mailto:matheo@nexavyr.tech">matheo@nexavyr.tech</a></div>
+    </div>
+    <div class="foot-bottom"><span data-en="© 2026 Nexavyr · Made in France">© 2026 Nexavyr · Made in France</span><span data-en="● Realistic render · ● Delivered in 24h">● Rendu réaliste · ● Livré sous 24h</span></div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+  /* reveal — avec filet de sécurité */
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.12});
+      els.forEach(function(el){io.observe(el);});
+    } else { els.forEach(function(el){el.classList.add('in');}); }
+    setTimeout(function(){ if(!document.querySelector('.reveal.in')){ els.forEach(function(el){el.classList.add('in');}); } },1600);
+  })();
+</script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
