@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact · Voir le rendu sur un de vos chantiers · Nexavyr</title>
-<meta name="description" content="Laissez vos coordonnées : sous 24h je vous montre l'avant / après sur un de vos vrais chantiers. Sans engagement.">
+<title>Contact · Voyez ce qu'on construirait pour vous · Nexavyr</title>
+<meta name="description" content="Laissez vos coordonnées : sous 24h on regarde votre boîte, où l'argent fuit, et par quelle brique on construirait votre système. Sans engagement.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -44,10 +44,10 @@
   <div class="wrap">
     <div class="grid g2" style="align-items:start;gap:34px">
       <div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="Realistic render within 24h">Rendu réaliste sous 24h</b><small data-en="The finished garden on your client's own plot">Le jardin fini sur le propre terrain de votre client</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="Free render, no commitment">Rendu gratuit, sans engagement</b><small data-en="Send one photo of a real project, see the before / after">Envoyez une photo d'un vrai chantier, voyez l'avant / après</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="Nothing to install">Rien à installer</b><small data-en="You send a photo, I do the render for you">Vous envoyez une photo, je fais le rendu à votre place</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="Ready to present">Prêt à présenter</b><small data-en="A clean image to put next to your quote">Une image nette à poser à côté de votre devis</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="A read on your leaks, in 15 min">Un diagnostic de vos fuites, en 15 min</b><small data-en="Where the money and the time actually walk out">Là où filent vraiment l'argent et le temps</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="No commitment, no pressure">Sans engagement, sans pression</b><small data-en="You leave knowing what we'd build first">Vous repartez en sachant par quoi on commencerait</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Nothing to install, nothing to learn">Rien à installer, rien à apprendre</b><small data-en="We build your system and run it for you">On construit votre système et on le gère pour vous</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="A reachable French contact">Un interlocuteur français joignable</b><small data-en="A real person behind your system, not a ticket queue">Une vraie personne derrière votre système, pas une file de tickets</small></div></div>
         <div style="margin-top:26px">
           <span class="eyebrow" data-en="Or directly">Ou directement</span><br>
           <a href="https://wa.me/33768825506" class="btn btn-gho" style="margin:6px 6px 0 0">💬 WhatsApp · 07 68 82 55 06</a>
@@ -59,7 +59,7 @@
         <!-- Formulaire réel : envoie la demande par email via Web3Forms (gratuit). -->
         <form id="quoteForm" class="grid g2">
           <input type="hidden" name="access_key" value="ad88f952-7ed4-48d7-b2aa-082eed0ad704">
-          <input type="hidden" name="subject" value="🖼️ Nouvelle demande de rendu — site Nexavyr">
+          <input type="hidden" name="subject" value="🧱 Nouvelle demande — appel système Nexavyr">
           <input type="hidden" name="from_name" value="Site Nexavyr">
           <div class="field"><label data-en="First name *">Prénom *</label><input name="prenom" required></div>
           <div class="field"><label data-en="Last name *">Nom *</label><input name="nom" required></div>
@@ -68,15 +68,15 @@
           <div class="field"><label data-en="Company name">Nom de l'entreprise</label><input name="entreprise"></div>
           <div class="field"><label data-en="Activity">Activité</label><select name="metier"><option data-en="Landscaping / garden design">Paysagiste / aménagement de jardin</option><option data-en="Terraces & decks">Terrasses & platelages</option><option data-en="Pool surroundings">Abords de piscine</option><option data-en="Paving / paths">Pavage / allées</option><option data-en="Other outdoor project">Autre projet extérieur</option></select></div>
           <div class="field"><label data-en="Quotes presented per month">Devis présentés par mois</label><select name="devis_par_mois"><option>&lt; 5</option><option data-en="5 to 15">5 à 15</option><option data-en="15 to 30">15 à 30</option><option>30+</option></select></div>
-          <div class="field full"><label data-en="What interests you?">Qu'est-ce qui vous intéresse ?</label><select name="formule"><option data-en="I don't know yet, advise me">Je ne sais pas encore, conseillez-moi</option><option data-en="One test render">Un rendu test</option><option data-en="Renders on demand (recommended)">Rendus à la demande (recommandé)</option><option data-en="The full pack">Le pack complet</option></select></div>
+          <div class="field full"><label data-en="Where does it hurt most right now?">Où ça fait le plus mal en ce moment ?</label><select name="douleur"><option data-en="I don't know yet, help me see it">Je ne sais pas encore, aidez-moi à y voir clair</option><option data-en="Quotes that don't sign">Des devis qui ne signent pas</option><option data-en="Calls / leads I miss on site">Des appels / leads que je rate sur chantier</option><option data-en="Follow-ups and prospects slipping away">Les relances et prospects qui filent</option><option data-en="Admin eating my evenings">L'administratif qui bouffe mes soirées</option><option data-en="Recurring revenue I let slip">Le récurrent que je laisse filer</option><option data-en="A bit of everything">Un peu de tout ça</option></select></div>
           <div class="field full"><label data-en="Referred by whom? (if recommended)">De la part de qui ? (si on vous a recommandé)</label><input name="recommande_par"></div>
           <div class="field full"><label data-en="Message (optional)">Message (optionnel)</label><textarea name="message" rows="3"></textarea></div>
-          <div class="full"><button class="btn btn-pri" type="submit" style="width:100%" data-en="See the render on one of my projects →">Voir le rendu sur un de mes chantiers →</button></div>
+          <div class="full"><button class="btn btn-pri" type="submit" style="width:100%" data-en="See what you'd build for me →">Voir ce que vous construiriez pour moi →</button></div>
         </form>
         <div id="ok" style="display:none;text-align:center;padding:20px">
           <div style="font-size:2.4rem">✓</div>
           <b style="font-size:1.1rem" data-en="Thank you, got it!">Merci, c'est noté !</b>
-          <p class="muted" style="margin-top:8px;font-size:.9rem" data-en="We'll get back to you within 24 working hours to show you the render on one of your projects.">On vous recontacte sous 24h ouvrées pour vous montrer le rendu sur un de vos chantiers.</p>
+          <p class="muted" style="margin-top:8px;font-size:.9rem" data-en="We'll get back to you within 24 working hours to look at your business and show you what we'd build.">On vous recontacte sous 24h ouvrées pour regarder votre boîte et vous montrer ce qu'on construirait.</p>
         </div>
         <p class="muted" style="font-size:.74rem;margin-top:14px" data-en="By submitting, you agree to be contacted. Your data is encrypted, GDPR-compliant and never resold.">En soumettant, vous acceptez d'être recontacté. Vos données sont chiffrées, conformes RGPD et ne sont jamais revendues.</p>
       </div>
@@ -89,15 +89,15 @@
     <div class="foot-grid">
       <div>
         <div class="logo"><img src="logo.svg" alt="Nexavyr" style="height:22px"></div>
-        <p style="color:#16d6a3;font-weight:700;margin:8px 0 0;font-size:.95rem" data-en="Show it. Sign it.">Ils le voient, ils signent.</p>
-        <p style="margin-top:10px;max-width:340px" data-en="The before / after render that makes landscapers' quotes get signed. You send the photo of the bare plot, I send back the finished garden within 24h — ready to present. Made in France.">Le rendu avant / après qui fait signer les devis des paysagistes. Vous envoyez la photo du terrain nu, je vous renvoie le jardin fini sous 24h — prêt à présenter. Made in France.</p>
+        <p style="color:#16d6a3;font-weight:700;margin:8px 0 0;font-size:.95rem" data-en="Your system. Built for you.">Votre système. Fait pour vous.</p>
+        <p style="margin-top:10px;max-width:340px" data-en="The made-for-you system that wakes the money asleep in your quotes and keeps your business running without you. For landscapers. Made in France.">Le système sur-mesure qui réveille l'argent endormi dans vos devis et fait tourner votre boîte sans vous. Pour paysagistes. Made in France.</p>
       </div>
-      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Product">Produit</b>
-        <a href="produit.html" data-en="Solution">La solution</a><br><a href="tarifs.html" data-en="What's included">Ce qui est inclus</a><br><a href="preuves.html" data-en="Proof">Preuves</a><br><a href="montage-chantier.html" data-en="Before / after">Avant / après</a></div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Your system">Votre système</b>
+        <a href="produit.html" data-en="The system">Le système</a><br><a href="tarifs.html" data-en="The offer">L'offre</a><br><a href="preuves.html" data-en="Proof">Preuves</a><br><a href="montage-chantier.html" data-en="Before / after">Avant / après</a></div>
       <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Contact">Contact</b>
         <a href="https://wa.me/33768825506">💬 WhatsApp · 07 68 82 55 06</a><br><a href="mailto:matheo@nexavyr.tech">matheo@nexavyr.tech</a></div>
     </div>
-    <div class="foot-bottom"><span data-en="© 2026 Nexavyr · Made in France">© 2026 Nexavyr · Made in France</span><span data-en="● Realistic render · ● Delivered in 24h">● Rendu réaliste · ● Livré sous 24h</span></div>
+    <div class="foot-bottom"><span data-en="© 2026 Nexavyr · Made in France">© 2026 Nexavyr · Made in France</span><span data-en="● Built for you · ● Reply within 24h">● Construit pour vous · ● Réponse sous 24h</span></div>
   </div>
 </footer>
 

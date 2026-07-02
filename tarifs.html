@@ -3,10 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ce qui est inclus · Nexavyr</title>
-<meta name="description" content="Ce que comprend le rendu avant / après pour paysagistes : options à la carte, livraison sous 24h, vos photos jamais revendues. Le prix se discute en RDV.">
+<title>L'offre · On construit VOTRE système · Nexavyr</title>
+<meta name="description" content="Une seule offre : on construit VOTRE système sur-mesure, brique par brique. On regarde vos fuites en 15 min, on vous montre ce qu'on bâtirait, on le construit et on le gère. Offre pionniers. Le prix se discute en RDV.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
+<style>
+  .steps3{grid-template-columns:repeat(3,1fr);counter-reset:st}
+  @media(max-width:820px){.steps3{grid-template-columns:1fr}}
+  .stepc{position:relative;padding-top:30px}
+  .stepc .no{position:absolute;top:-16px;left:24px;width:46px;height:46px;border-radius:13px;background:var(--grad);color:#04231b;font-weight:900;font-size:1.25rem;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(22,214,163,.28)}
+  .stepc h3{font-size:1.12rem;margin:6px 0 8px}
+  .stepc p{color:var(--muted);font-size:.92rem}
+  .offer-box{background:linear-gradient(160deg,rgba(22,214,163,.09),var(--bg2));border:1px solid rgba(22,214,163,.3);border-radius:26px;padding:44px 34px;max-width:760px;margin:0 auto;text-align:center}
+  .offer-box .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;max-width:600px;margin:26px auto 0;text-align:left}
+  @media(max-width:600px){.offer-box .checks{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
@@ -14,19 +25,18 @@
 
 <header>
   <div class="wrap"><nav>
-    <a class="logo" href="index.html"><img src="logo.svg" alt="Nexavyr — Captez plus, gagnez plus" style="height:26px;display:block"></a>
+    <a class="logo" href="index.html"><img src="logo.svg" alt="Nexavyr" style="height:26px;display:block"></a>
     <div class="nav-links">
-      <a href="produit.html" data-en="Product">Produit</a>
+      <a href="produit.html" data-en="Your system">Votre système</a>
       <a href="preuves.html" data-en="Proof">Preuves</a>
-      <a href="tarifs.html" class="active" data-en="Plans">Formules</a>
+      <a href="tarifs.html" class="active" data-en="The offer">L'offre</a>
       <a href="tarifs.html#securite" data-en="Security">Sécurité</a>
       <a href="contact.html" data-en="Contact">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="tel:+33768825506" class="nav-call">📞 07 68 82 55 06</a>
       <button class="btn btn-gho lang-btn" onclick="nxToggleLang()">🌐 FR</button>
-      <a href="demo.html" class="btn btn-gho" data-en="See a render">Voir un rendu</a>
-      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See the render">Voir le rendu</a>
+      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See what we'd build">Voir ce qu'on construirait</a>
     </div>
   </nav></div>
 </header>
@@ -34,104 +44,67 @@
 <!-- HERO -->
 <section class="page-hero">
   <div class="wrap center">
-    <span class="pill"><span class="dot"></span> <span data-en="What's included">Ce qui est inclus</span></span>
-    <h1 style="margin-top:18px" data-en="One signed quote, and the render has already paid for itself.">Un seul devis signé, et le rendu est déjà rentabilisé.</h1>
-    <p class="lead" style="margin:18px auto 0" data-en="No prices thrown around online: what you invest depends on how many quotes you present and the options you activate — that's discussed in a 15-min call. Here's exactly what's included.">Pas de prix balancé en ligne : ce que vous investissez dépend du nombre de devis que vous présentez et des options activées — ça se discute en 15 min. Voici exactement ce qui est inclus.</p>
+    <span class="pill"><span class="dot"></span> <span data-en="One offer. Yours.">Une offre. La vôtre.</span></span>
+    <h1 style="margin-top:18px" data-en="No menu of options. We build YOUR system.">Pas de catalogue à choisir. On construit VOTRE système.</h1>
+    <p class="lead" style="margin:18px auto 0" data-en="You don't pick from a shelf. We look at where your money leaks, we show you what we'd build, and we build it — brick by brick. Nothing to install, nothing to learn. The price depends on your business, so it's settled in the call — never thrown around online.">Vous ne choisissez pas sur une étagère. On regarde où votre argent fuit, on vous montre ce qu'on bâtirait, et on le construit — brique par brique. Rien à installer, rien à apprendre. Le prix dépend de votre boîte : il se règle en appel, jamais balancé en ligne.</p>
   </div>
 </section>
 
-<!-- 3 FORMULES -->
-<section style="padding-top:20px">
+<!-- COMMENT ÇA MARCHE -->
+<section style="padding-top:24px">
   <div class="wrap">
-    <div class="center" style="max-width:720px;margin:0 auto 48px">
-      <span class="eyebrow" data-en="The offer">L'offre</span>
-      <h2 data-en="Three ways to put a render on your quotes.">Trois façons de mettre un rendu sur vos devis.</h2>
-      <p class="muted" style="margin-top:14px" data-en="Not sure what you need? Ask for a render on one of your real quotes — we tell you what fits your business, no strings attached.">Pas sûr de ce qu'il vous faut ? Demandez un rendu sur un de vos vrais devis, on vous dit ce qui convient à votre activité — sans engagement.</p>
-      <p style="margin-top:16px"><span class="pill" style="border-color:rgba(245,196,81,.5);color:var(--gold)">🔥 <span data-en="Founders offer: 5 founding landscapers · launch rate locked for life">Offre pionniers : 5 paysagistes fondateurs · tarif de lancement bloqué à vie</span></span></p>
+    <div class="center" style="max-width:720px;margin:0 auto 52px">
+      <span class="eyebrow" data-en="How it works">Comment ça marche</span>
+      <h2 data-en="Three steps. Zero effort on your side.">Trois étapes. Zéro effort de votre côté.</h2>
     </div>
-    <div class="grid formules">
-      <div class="card formule reveal">
-        <h3 data-en="The test render">Le rendu test</h3>
-        <span class="tag" data-en="One render on one of your quotes">Un rendu sur un de vos devis</span>
-        <p class="desc" data-en="To see the effect on a real client.">Pour voir l'effet sur un vrai client.</p>
-        <div class="check"><span class="ck">✓</span><b data-en="One realistic before / after">Un avant / après réaliste</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Based on your client's real plot">Basé sur le vrai terrain de votre client</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Delivered within 24h">Livré sous 24h</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Ready to present in your quote meeting">Prêt à présenter en RDV de devis</b></div>
-        <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-gho" style="margin-top:18px;width:100%;justify-content:center" data-en="I try it on one quote →">Je teste sur un devis →</a>
+    <div class="grid steps3">
+      <div class="card stepc reveal">
+        <div class="no">1</div>
+        <h3 data-en="We look at your leaks — 15 min">On regarde vos fuites — 15 min</h3>
+        <p data-en="You show us your business: the quotes that stall, the calls you miss, the admin that eats your evenings. We spot exactly where the money and the time walk out.">Vous nous montrez votre boîte : les devis qui traînent, les appels que vous ratez, l'administratif qui bouffe vos soirées. On repère précisément par où filent l'argent et le temps.</p>
       </div>
-      <div class="card formule best reveal">
-        <span class="reco" data-en="⭐ Most chosen">⭐ Le plus choisi</span>
-        <h3 data-en="Renders on demand">Rendus à la demande</h3>
-        <span class="tag" data-en="For every quote that matters">Pour chaque devis qui compte</span>
-        <p class="desc" data-en="You send the photos of your projects, I turn each render around within 24h.">Vous envoyez les photos de vos projets, je vous renvoie chaque rendu sous 24h.</p>
-        <div class="check"><span class="ck">✓</span><b data-en="Everything in the test render">Tout le rendu test</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Renders on your ongoing quotes">Rendus sur vos devis en cours</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Adjustments if the client wants changes">Ajustements si le client veut des modifs</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Terrace, path, beds, lighting">Terrasse, allée, massifs, éclairage</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Priority 24h turnaround">Priorité de traitement 24h</b></div>
-        <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" style="margin-top:18px;width:100%;justify-content:center" data-en="Tell me what's optimal →">On me dit ce qui est optimal →</a>
+      <div class="card stepc reveal">
+        <div class="no">2</div>
+        <h3 data-en="We show you what we'd build">On vous montre ce qu'on construirait</h3>
+        <p data-en="No generic box. We lay out the bricks made for your business — starting with the one that brings money back the fastest, usually getting your quotes signed.">Pas de boîte générique. On pose les briques faites pour votre boîte — en commençant par celle qui rapporte le plus vite, souvent faire signer vos devis.</p>
       </div>
-      <div class="card formule reveal">
-        <h3 data-en="The full pack">Le pack complet</h3>
-        <span class="tag" data-en="Renders + presentation">Rendus + présentation</span>
-        <p class="desc" data-en="Renders on all your projects, plus a clean layout for your client.">Les rendus sur tous vos projets, plus une mise en page nette pour votre client.</p>
-        <div class="check"><span class="ck">✓</span><b data-en="Everything in Renders on demand">Tout les Rendus à la demande</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Clean layout to hand with the quote">Mise en page nette à remettre avec le devis</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Several variations per project">Plusieurs variantes par projet</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Renders reusable for your marketing">Rendus réutilisables pour votre com'</b></div>
-        <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-gho" style="margin-top:18px;width:100%;justify-content:center" data-en="I want the full pack →">Je veux le pack complet →</a>
+      <div class="card stepc reveal">
+        <div class="no">3</div>
+        <h3 data-en="We build it and we run it">On le construit et on le gère</h3>
+        <p data-en="We build your system and keep it running behind you. You keep working the way you always have — nothing new lands on your plate, ever.">On bâtit votre système et on le fait tourner derrière vous. Vous continuez à bosser comme toujours — rien de neuf ne retombe sur vous, jamais.</p>
       </div>
     </div>
-    <p class="center muted" style="font-size:.86rem;margin-top:28px;max-width:680px;margin-left:auto;margin-right:auto" data-en="No commitment. You start with a render on one of your real quotes, you see the effect on your client, and you decide from there. The exact figure is discussed in a 15-min call.">Sans engagement. Vous démarrez avec un rendu sur un de vos vrais devis, vous mesurez l'effet sur votre client, et vous décidez ensuite. Le montant exact se discute en 15 min.</p>
   </div>
 </section>
 
-<!-- SOCLE + FACTEURS -->
+<!-- L'OFFRE UNIQUE -->
 <section style="background:var(--bg2)">
   <div class="wrap">
-    <div class="grid g2" style="align-items:start">
-      <div class="card">
-        <span class="eyebrow" data-en="Always included">Toujours inclus</span>
-        <h3 style="font-size:1.3rem;margin-bottom:6px" data-en="What every render comes with">Ce que comprend chaque rendu</h3>
-        <p class="muted" style="font-size:.84rem;margin-bottom:14px" data-en="We always start here, then you add the options you want — fully à la carte.">On part toujours de là, puis vous ajoutez les options que vous voulez — entièrement à la carte.</p>
-        <div class="check"><span class="ck">✓</span><b data-en="Realistic before / after render">Rendu avant / après réaliste</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Based on your client's real plot">Basé sur le vrai terrain de votre client</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Your project: materials, layout, plants">Votre projet : matériaux, aménagement, végétaux</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Delivered within 24h">Livré sous 24h</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Ready to present, clean image">Prêt à présenter, image nette</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Nothing to install on your side">Rien à installer de votre côté</b></div>
-        <div class="check"><span class="ck">✓</span><b data-en="Your photos never resold">Vos photos jamais revendues</b></div>
+    <div class="offer-box reveal">
+      <span class="pill" style="border-color:rgba(245,196,81,.5);color:var(--gold)">🔥 <span data-en="Founders offer · 5 founding landscapers">Offre pionniers · 5 paysagistes fondateurs</span></span>
+      <h2 style="margin:22px auto 14px;max-width:22ch" data-en="Be one of the 5. Your launch rate, locked for life.">Soyez l'un des 5. Votre tarif de lancement, bloqué à vie.</h2>
+      <p class="muted" style="max-width:560px;margin:0 auto;font-size:1.05rem" data-en="Five founding landscapers. We build your system with you, hand in hand, and your launch rate never moves — not next year, not ever. In exchange, your feedback shapes what we build for the next ones.">Cinq paysagistes fondateurs. On construit votre système avec vous, main dans la main, et votre tarif de lancement ne bouge jamais — ni l'an prochain, ni jamais. En échange, votre retour façonne ce qu'on bâtira pour les suivants.</p>
+      <div class="checks">
+        <div class="check"><span class="ck">✓</span><b data-en="Built around your real leaks">Bâti autour de vos vraies fuites</b></div>
+        <div class="check"><span class="ck">✓</span><b data-en="We build it and we run it">On le construit et on le gère</b></div>
+        <div class="check"><span class="ck">✓</span><b data-en="Nothing to install, nothing to learn">Rien à installer, rien à apprendre</b></div>
+        <div class="check"><span class="ck">✓</span><b data-en="A reachable French contact">Un interlocuteur français joignable</b></div>
+        <div class="check"><span class="ck">✓</span><b data-en="Start with one brick, add the rest later">On démarre par une brique, le reste après</b></div>
+        <div class="check"><span class="ck">✓</span><b data-en="Launch rate locked for life">Tarif de lancement bloqué à vie</b></div>
       </div>
-      <div>
-        <span class="eyebrow" data-en="What shapes the offer">Ce qui fait l'offre</span>
-        <h3 style="font-size:1.3rem;margin-bottom:14px" data-en="3 factors, that's it">3 facteurs, c'est tout</h3>
-        <div class="card" style="margin-bottom:14px"><b data-en="01 · Number of quotes">01 · Nombre de devis</b><br><span class="muted" style="font-size:.9rem" data-en="One test render, or renders on every quote you present.">Un rendu test, ou des rendus sur chaque devis que vous présentez.</span></div>
-        <div class="card" style="margin-bottom:14px"><b data-en="02 · Level of detail">02 · Niveau de détail</b><br><span class="muted" style="font-size:.9rem" data-en="A simple before / after, or lighting, several variations, a layout.">Un simple avant / après, ou éclairage, plusieurs variantes, une mise en page.</span></div>
-        <div class="card"><b data-en="03 · Options">03 · Options</b><br><span class="muted" style="font-size:.9rem" data-en="Adjustments, presentation layout, reusable renders for your marketing…">Ajustements, mise en page de présentation, rendus réutilisables pour votre com'…</span></div>
-      </div>
+      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" style="margin-top:30px;font-size:1.05rem;padding:17px 30px" data-en="See what we'd build for you — 15 min">Voir ce qu'on construirait pour vous — 15 min</a>
+      <p class="muted" style="font-size:.82rem;margin-top:14px" data-en="No commitment · reply within 24h · the price is settled in the call">Sans engagement · réponse sous 24h · le prix se règle en appel</p>
     </div>
   </div>
 </section>
 
-<!-- OPTIONS -->
+<!-- POURQUOI PAS DE PRIX EN LIGNE -->
 <section>
   <div class="wrap">
-    <div class="center" style="margin-bottom:44px">
-      <span class="eyebrow" data-en="Options catalogue">Catalogue d'options</span>
-      <h2 data-en="You activate what you need. Nothing else.">Vous activez ce dont vous avez besoin. Rien d'autre.</h2>
-    </div>
-    <div class="grid g4">
-      <div class="card opt killer reveal"><span class="flag">FLAGSHIP</span><div class="ic">🖼️</div><h3 data-en="Before / after render">Rendu avant / après</h3><p data-en="From a photo of the bare plot, the finished garden — terrace, path, beds, lighting. The signing tool.">À partir d'une photo du terrain nu, le jardin fini — terrasse, allée, massifs, éclairage. L'outil qui fait signer.</p></div>
-      <div class="card opt killer reveal"><span class="flag" data-en="TOP">TOP</span><div class="ic">💡</div><h3 data-en="Lighting &amp; evening ambiance">Éclairage & ambiance du soir</h3><p data-en="The lit garden at dusk — the extra clients keep once they can see it.">Le jardin éclairé au crépuscule — l'option que les clients gardent une fois qu'ils la voient.</p></div>
-      <div class="card opt killer reveal"><span class="flag" data-en="HANDY">PRATIQUE</span><div class="ic">🔁</div><h3 data-en="Adjustments">Ajustements</h3><p data-en="The client wants a change? A revised version so they refine their project live.">Le client veut une modif ? Une version corrigée pour qu'il affine son projet en direct.</p></div>
-      <div class="card opt reveal"><div class="ic">🎬</div><h3 data-en="Several variations">Plusieurs variantes</h3><p data-en="Two or three versions of the project (materials, layouts) to help the client choose.">Deux ou trois versions du projet (matériaux, agencements) pour aider le client à choisir.</p></div>
-      <div class="card opt reveal"><div class="ic">📄</div><h3 data-en="Presentation layout">Mise en page de présentation</h3><p data-en="A clean sheet, render + your details, to hand your client with the quote.">Une fiche nette, rendu + vos coordonnées, à remettre au client avec le devis.</p></div>
-      <div class="card opt reveal"><div class="ic">🌷</div><h3 data-en="Mature planting">Plantations à maturité</h3><p data-en="Show the garden as it will look in a few seasons, not on day one.">Montrer le jardin tel qu'il sera dans quelques saisons, pas au jour 1.</p></div>
-      <div class="card opt reveal"><div class="ic">🏊</div><h3 data-en="Pool surroundings">Abords de piscine</h3><p data-en="Deck, coping, terrace: the volumes hardest to imagine, made obvious.">Plage, margelles, terrasse : les volumes les plus durs à imaginer, rendus évidents.</p></div>
-      <div class="card opt reveal"><div class="ic">📱</div><h3 data-en="Ready for your social media">Prêt pour vos réseaux</h3><p data-en="Renders formatted to post your before / afters and win new clients.">Rendus formatés pour poster vos avant / après et attirer de nouveaux clients.</p></div>
-      <div class="card opt reveal"><div class="ic">⚡</div><h3 data-en="Express turnaround">Traitement express</h3><p data-en="A quote meeting tomorrow morning? Priority render so you're never caught short.">Un RDV de devis demain matin ? Rendu prioritaire pour ne jamais être pris de court.</p></div>
-      <div class="card opt reveal"><div class="ic">🌐</div><h3 data-en="Website creation">Création de site web</h3><p data-en="No website yet? We build you one, clean and conversion-focused — like this one.">Pas encore de site ? On vous en crée un, propre et qui convertit — comme celui-ci.</p></div>
+    <div class="center" style="max-width:720px;margin:0 auto 44px">
+      <span class="eyebrow" data-en="Why no price online">Pourquoi pas de prix en ligne</span>
+      <h2 data-en="A price on a shelf would be a lie.">Un prix sur une étagère, ce serait mentir.</h2>
+      <p class="muted" style="margin-top:14px" data-en="Two landscapers never bleed in the same place. One loses quotes, another loses evenings to admin, a third leaks recurring revenue. Your system is built for YOUR leaks — so its price is yours too. That's a two-minute conversation, not a number on a page.">Deux paysagistes ne saignent jamais au même endroit. L'un perd des devis, l'autre perd ses soirées dans l'administratif, un troisième laisse filer son récurrent. Votre système est bâti pour VOS fuites — alors son prix est le vôtre aussi. Ça se règle en deux minutes de conversation, pas avec un chiffre sur une page.</p>
     </div>
   </div>
 </section>
@@ -141,37 +114,37 @@
   <div class="wrap">
     <div class="center" style="max-width:760px;margin:0 auto 44px">
       <span class="eyebrow" data-en="Trust · Reliability · Made in France">Confiance · Fiabilité · Made in France</span>
-      <h2 data-en="Your photos and projects stay yours.">Vos photos et vos projets restent les vôtres.</h2>
-      <p class="muted" style="margin-top:14px" data-en="The photos you send, your clients' plots, your projects: everything is handled confidentially and <b>never resold</b> — not to a competitor, not to anyone. The renders belong to you, to present, keep or delete whenever you want.">Les photos que vous envoyez, les terrains de vos clients, vos projets : tout est traité en confidentialité et n'est <b>jamais revendu</b> — ni à un concurrent, ni à personne. Les rendus vous appartiennent, à présenter, garder ou supprimer quand vous voulez.</p>
+      <h2 data-en="Your business stays yours.">Votre boîte reste la vôtre.</h2>
+      <p class="muted" style="margin-top:14px" data-en="Everything you share — your photos, your clients' plots, your projects, your numbers — is handled confidentially and <b>never resold</b>, not to a competitor, not to anyone. Your system belongs to your business. And there's a real French person behind it, reachable — not a ticket queue.">Tout ce que vous partagez — vos photos, les terrains de vos clients, vos projets, vos chiffres — est traité en confidentialité et n'est <b>jamais revendu</b>, ni à un concurrent, ni à personne. Votre système appartient à votre boîte. Et derrière, il y a une vraie personne française, joignable — pas une file de tickets.</p>
     </div>
     <div class="trust-badges">
       <div class="tbadge reveal"><span class="tb-ic">🇫🇷</span><b data-en="French contact">Interlocuteur français</b><small data-en="Reachable, France-based">Joignable, basé en France</small></div>
-      <div class="tbadge reveal"><span class="tb-ic">🖼️</span><b data-en="The renders are yours">Les rendus sont à vous</b><small data-en="Yours to present and keep">À présenter et à garder</small></div>
-      <div class="tbadge reveal"><span class="tb-ic">🔒</span><b data-en="Confidential handling">Traitement confidentiel</b><small data-en="Your clients' plots protected">Les terrains de vos clients protégés</small></div>
+      <div class="tbadge reveal"><span class="tb-ic">🧱</span><b data-en="Your system is yours">Votre système est à vous</b><small data-en="Built for your business">Bâti pour votre boîte</small></div>
+      <div class="tbadge reveal"><span class="tb-ic">🔒</span><b data-en="Confidential handling">Traitement confidentiel</b><small data-en="Your data protected">Vos données protégées</small></div>
       <div class="tbadge reveal"><span class="tb-ic">🚫</span><b data-en="Never resold">Jamais revendu</b><small data-en="Your projects stay private">Vos projets restent privés</small></div>
-      <div class="tbadge reveal"><span class="tb-ic">🌿</span><b data-en="Never reused">Jamais réexploité</b><small data-en="One project, one client">Un projet, un client</small></div>
-      <div class="tbadge reveal"><span class="tb-ic">⏱️</span><b data-en="Delivered in 24h">Livré sous 24h</b><small data-en="A reliable turnaround">Un délai fiable</small></div>
+      <div class="tbadge reveal"><span class="tb-ic">🛠️</span><b data-en="We run it for you">On le gère pour vous</b><small data-en="Nothing lands on your plate">Rien ne retombe sur vous</small></div>
+      <div class="tbadge reveal"><span class="tb-ic">🤝</span><b data-en="No commitment">Sans engagement</b><small data-en="You decide as you go">Vous décidez au fur et à mesure</small></div>
     </div>
     <div class="grid sec-grid">
       <div class="sec-card reveal">
-        <div class="h"><span class="e">🔒</span><div><b data-en="Your photos &amp; renders">Vos photos & rendus</b><small data-en="Confidential and yours">Confidentiels et à vous</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="Handled confidentially">Traités en confidentialité</b><small data-en="Only used to make your render">Utilisés uniquement pour faire votre rendu</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="Never reused for anyone else">Jamais réexploités pour un autre</b><small data-en="One project, one client">Un projet, un client</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="The renders belong to you">Les rendus vous appartiennent</b><small data-en="Present them, keep them, reuse them">À présenter, garder, réutiliser</small></div></div>
+        <div class="h"><span class="e">🔒</span><div><b data-en="Your data &amp; your projects">Vos données & vos projets</b><small data-en="Confidential and yours">Confidentiels et à vous</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Handled confidentially">Traités en confidentialité</b><small data-en="Only used to build and run your system">Utilisés uniquement pour bâtir et faire tourner votre système</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Never reused for anyone else">Jamais réexploités pour un autre</b><small data-en="One business, one system">Une boîte, un système</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="Your system belongs to you">Votre système vous appartient</b><small data-en="Built for your business, not rented out">Bâti pour votre boîte, pas loué ailleurs</small></div></div>
         <div class="check"><span class="ck">✓</span><div><b data-en="Deleted on request">Supprimés sur demande</b><small data-en="You ask, we remove everything">Vous demandez, on supprime tout</small></div></div>
       </div>
       <div class="sec-card reveal">
-        <div class="h"><span class="e">🤝</span><div><b data-en="A reliable partner">Un prestataire fiable</b><div><small data-en="A real person, reachable">Une vraie personne, joignable</small></div></div></div>
+        <div class="h"><span class="e">🤝</span><div><b data-en="A reliable partner">Un partenaire fiable</b><div><small data-en="A real person, reachable">Une vraie personne, joignable</small></div></div></div>
         <div class="check"><span class="ck">✓</span><div><b data-en="Never resold">Jamais revendu</b><small data-en="Not to a competitor, not to anyone">Ni à un concurrent, ni à personne</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="Delivered within 24h">Livré sous 24h</b><small data-en="A turnaround you can rely on for your quotes">Un délai fiable pour vos devis</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="A French contact, directly reachable">Un interlocuteur français, joignable</b><small data-en="A real person behind the service">Une vraie personne derrière le service</small></div></div>
-        <div class="check"><span class="ck">✓</span><div><b data-en="No commitment">Sans engagement</b><small data-en="You start with one render and decide from there">Vous démarrez avec un rendu et décidez ensuite</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="We build it and we run it">On le construit et on le gère</b><small data-en="Nothing lands back on you">Rien ne retombe sur vous</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="A French contact, directly reachable">Un interlocuteur français, joignable</b><small data-en="A real person behind your system">Une vraie personne derrière votre système</small></div></div>
+        <div class="check"><span class="ck">✓</span><div><b data-en="No commitment">Sans engagement</b><small data-en="You start with one brick and decide from there">Vous démarrez par une brique et décidez ensuite</small></div></div>
       </div>
     </div>
     <div class="center" style="margin-top:30px">
       <span class="pill" style="margin:4px"><span class="dot"></span> Made in France</span>
-      <span class="pill" style="margin:4px"><span class="dot"></span> <span data-en="Renders never resold">Rendus jamais revendus</span></span>
-      <span class="pill" style="margin:4px"><span class="dot"></span> <span data-en="Delivered in 24h">Livré sous 24h</span></span>
+      <span class="pill" style="margin:4px"><span class="dot"></span> <span data-en="Your system, never resold">Votre système, jamais revendu</span></span>
+      <span class="pill" style="margin:4px"><span class="dot"></span> <span data-en="We build it and run it">On le construit et on le gère</span></span>
     </div>
   </div>
 </section>
@@ -183,20 +156,20 @@
       <span class="eyebrow">FAQ</span>
       <h2 data-en="Your questions, our answers.">Vos questions, nos réponses.</h2>
     </div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="What does it actually cost?">Combien ça coûte concrètement ?</span><span class="pl">+</span></div><div class="faq-a" data-en="It depends on how many quotes you present and the options you activate — that's why the exact figure is discussed in a 15-min call, not thrown around online. The logic is simple: a single quote signed thanks to the render more than covers it.">Ça dépend du nombre de devis que vous présentez et des options activées — c'est pour ça que le montant exact se discute en 15 min, pas balancé en ligne. La logique est simple : un seul devis signé grâce au rendu le rembourse largement.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="Is there a commitment?">Y a-t-il un engagement ?</span><span class="pl">+</span></div><div class="faq-a" data-en="No commitment. You start with a render on one of your real quotes, you see the effect on your client, and you decide from there. No strings attached.">Pas d'engagement. Vous démarrez avec un rendu sur un de vos vrais devis, vous mesurez l'effet sur votre client, et vous décidez ensuite. Sans aucune contrainte.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="What do you base the render on?">Sur quoi vous basez le rendu ?</span><span class="pl">+</span></div><div class="faq-a" data-en="On the real photo of your client's plot plus the project you describe: materials, layout, plants, terrace, path, lighting. It's their own garden, finished the way you plan to build it — not a generic template.">Sur la vraie photo du terrain de votre client, plus le projet que vous décrivez : matériaux, aménagement, végétaux, terrasse, allée, éclairage. C'est son propre jardin, fini tel que vous comptez le réaliser — pas un modèle générique.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="How long does it take?">Combien de temps ça prend ?</span><span class="pl">+</span></div><div class="faq-a" data-en="You send the photo, you get the render back within 24h — in time for your quote meeting. Nothing to install, nothing to learn on your side.">Vous envoyez la photo, vous récupérez le rendu sous 24h — à temps pour votre RDV de devis. Rien à installer, rien à apprendre de votre côté.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="Can I start with one render and add options later?">Je peux commencer avec un rendu et ajouter des options après ?</span><span class="pl">+</span></div><div class="faq-a" data-en="That's exactly how it's designed. You start with one render on a real quote, and you add lighting, variations, a presentation layout… as you see the value.">Exactement comme c'est pensé. Vous démarrez avec un rendu sur un vrai devis, et vous ajoutez l'éclairage, des variantes, une mise en page de présentation… au fur et à mesure que vous en voyez l'intérêt.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="What does it actually cost?">Combien ça coûte concrètement ?</span><span class="pl">+</span></div><div class="faq-a" data-en="It depends on which bricks your business actually needs — that's why the figure is settled in a 15-min call, not thrown around online. The logic is simple: the first brick usually pays for itself with the quotes it gets signed.">Ça dépend des briques dont votre boîte a vraiment besoin — c'est pour ça que le montant se règle en appel de 15 min, pas balancé en ligne. La logique est simple : la première brique se rembourse souvent avec les devis qu'elle fait signer.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="Do I have to take the whole system at once?">Faut-il prendre tout le système d'un coup ?</span><span class="pl">+</span></div><div class="faq-a" data-en="No. We start with the brick that brings money back the fastest, and we add the rest when it makes sense for you. You never pay for what you're not using yet.">Non. On démarre par la brique qui rapporte le plus vite, et on ajoute le reste quand ça a du sens pour vous. Vous ne payez jamais ce que vous n'utilisez pas encore.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="Do I have to change how I work?">Dois-je changer ma façon de travailler ?</span><span class="pl">+</span></div><div class="faq-a" data-en="No. You keep working exactly as today. We build the system around you and run it — nothing to install, nothing new to learn.">Non. Vous continuez exactement comme aujourd'hui. On construit le système autour de vous et on le fait tourner — rien à installer, rien de neuf à apprendre.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="Is there a commitment?">Y a-t-il un engagement ?</span><span class="pl">+</span></div><div class="faq-a" data-en="No commitment. The 15-min call costs you nothing and commits you to nothing — you leave it knowing exactly what we'd build and where you'd get the money back first.">Pas d'engagement. L'appel de 15 min ne vous coûte rien et ne vous engage à rien — vous en ressortez en sachant exactement ce qu'on construirait et où vous récupérez l'argent en premier.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-en="Who's behind it?">Qui est derrière ?</span><span class="pl">+</span></div><div class="faq-a" data-en="Mathéo Maignan, founder of Nexavyr — a reachable French contact who builds your system and stays in the loop. Made in France.">Mathéo Maignan, fondateur de Nexavyr — un interlocuteur français joignable qui construit votre système et reste dans la boucle. Made in France.</div></div>
   </div>
 </section>
 
 <!-- CTA -->
 <section style="background:var(--bg2)">
   <div class="wrap center">
-    <h2 data-en="Let's make the render on one of your quotes.">On fait le rendu sur un de vos devis.</h2>
-    <p class="muted" style="margin:14px 0 24px" data-en="Free render on one of your real projects, delivered within 24h.">Rendu gratuit sur un de vos vrais chantiers, livré sous 24h.</p>
-    <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See the render on one of my projects →">Voir le rendu sur un de mes chantiers →</a>
+    <h2 data-en="See what we'd build for you.">Voyez ce qu'on construirait pour vous.</h2>
+    <p class="muted" style="margin:14px 0 24px" data-en="Fifteen minutes, no strings. You show us your business, we show you your system — and where the money comes back first.">Quinze minutes, sans engagement. Vous nous montrez votre boîte, on vous montre votre système — et où l'argent revient en premier.</p>
+    <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See what we'd build for you — 15 min">Voir ce qu'on construirait pour vous — 15 min</a>
   </div>
 </section>
 
@@ -205,15 +178,15 @@
     <div class="foot-grid">
       <div>
         <div class="logo"><img src="logo.svg" alt="Nexavyr" style="height:22px"></div>
-        <p style="color:#16d6a3;font-weight:700;margin:8px 0 0;font-size:.95rem" data-en="Show it. Sign it.">Ils le voient, ils signent.</p>
-        <p style="margin-top:10px;max-width:340px" data-en="The before / after render that makes landscapers' quotes get signed. You send the photo of the bare plot, I send back the finished garden within 24h — ready to present. Made in France.">Le rendu avant / après qui fait signer les devis des paysagistes. Vous envoyez la photo du terrain nu, je vous renvoie le jardin fini sous 24h — prêt à présenter. Made in France.</p>
+        <p style="color:#16d6a3;font-weight:700;margin:8px 0 0;font-size:.95rem" data-en="Your system. Built for you.">Votre système. Fait pour vous.</p>
+        <p style="margin-top:10px;max-width:340px" data-en="The made-for-you system that wakes the money asleep in your quotes and keeps your business running without you. For landscapers. Made in France.">Le système sur-mesure qui réveille l'argent endormi dans vos devis et fait tourner votre boîte sans vous. Pour paysagistes. Made in France.</p>
       </div>
-      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Product">Produit</b>
-        <a href="produit.html" data-en="Solution">La solution</a><br><a href="tarifs.html" data-en="What's included">Ce qui est inclus</a><br><a href="preuves.html" data-en="Proof">Preuves</a><br><a href="montage-chantier.html" data-en="Before / after">Avant / après</a></div>
+      <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Your system">Votre système</b>
+        <a href="produit.html" data-en="The system">Le système</a><br><a href="tarifs.html" data-en="The offer">L'offre</a><br><a href="preuves.html" data-en="Proof">Preuves</a><br><a href="montage-chantier.html" data-en="Before / after">Avant / après</a></div>
       <div><b style="color:var(--txt);display:block;margin-bottom:12px" data-en="Contact">Contact</b>
         <a href="https://wa.me/33768825506">💬 WhatsApp · 07 68 82 55 06</a><br><a href="mailto:matheo@nexavyr.tech">matheo@nexavyr.tech</a></div>
     </div>
-    <div class="foot-bottom"><span data-en="© 2026 Nexavyr · Made in France">© 2026 Nexavyr · Made in France</span><span data-en="● Realistic render · ● Delivered in 24h">● Rendu réaliste · ● Livré sous 24h</span></div>
+    <div class="foot-bottom"><span data-en="© 2026 Nexavyr · Made in France">© 2026 Nexavyr · Made in France</span><span data-en="● Built for you · ● Reply within 24h">● Construit pour vous · ● Réponse sous 24h</span></div>
   </div>
 </footer>
 

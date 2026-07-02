@@ -22,7 +22,7 @@ h2{font-size:clamp(1.7rem,3.6vw,2.6rem)}
 .btn-pri:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(22,214,163,.4)}
 .btn-gho{background:transparent;color:var(--txt);border:1px solid var(--line)}
 .btn-gho:hover{border-color:var(--acc);color:var(--acc)}
-.grid{display:grid;gap:20px}
+.grid{display:grid;gap:20px;align-items:start}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
 /* micro-interaction survol cartes (sobre, premium) */
 .card,.feat,.opt{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
