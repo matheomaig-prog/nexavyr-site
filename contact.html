@@ -16,17 +16,16 @@
   <div class="wrap"><nav>
     <a class="logo" href="index.html"><img src="logo.svg" alt="Nexavyr — Captez plus, gagnez plus" style="height:26px;display:block"></a>
     <div class="nav-links">
-      <a href="produit.html" data-en="Product">Produit</a>
+      <a href="produit.html" data-en="Your system">Votre système</a>
       <a href="preuves.html" data-en="Proof">Preuves</a>
-      <a href="tarifs.html" data-en="Plans">Formules</a>
+      <a href="tarifs.html" data-en="The offer">L'offre</a>
       <a href="tarifs.html#securite" data-en="Security">Sécurité</a>
       <a href="contact.html" class="active" data-en="Contact">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="tel:+33768825506" class="nav-call">📞 07 68 82 55 06</a>
       <button class="btn btn-gho lang-btn" onclick="nxToggleLang()">🌐 FR</button>
-      <a href="demo.html" class="btn btn-gho" data-en="See a render">Voir un rendu</a>
-      <a href="#form" class="btn btn-pri" data-en="See the render">Voir le rendu</a>
+      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="15-min call">Un appel de 15 min</a>
     </div>
   </nav></div>
 </header>
@@ -34,9 +33,9 @@
 <!-- HERO -->
 <section class="page-hero">
   <div class="wrap center">
-    <span class="pill"><span class="dot"></span> <span data-en="Free render">Rendu gratuit</span></span>
-    <h1 style="margin-top:18px" data-en="See the render on one of your own projects.">Voyez le rendu sur un de vos propres chantiers.</h1>
-    <p class="lead" style="margin:18px auto 0" data-en="Leave your details: within 24h I show you what the before / after looks like on one of your real projects. No commitment — you just see the effect for yourself.">Laissez vos coordonnées : sous 24h je vous montre ce que donne l'avant / après sur un de vos vrais chantiers. Sans engagement — vous voyez simplement l'effet par vous-même.</p>
+    <span class="pill"><span class="dot"></span> <span data-en="15 minutes, no strings">15 minutes, sans engagement</span></span>
+    <h1 style="margin-top:18px" data-en="See what we'd build for you.">Voyez ce qu'on construirait pour vous.</h1>
+    <p class="lead" style="margin:18px auto 0" data-en="Leave your details: within 24h we get back to you to look at your business — where the money leaks, and which brick we'd build first. No commitment, no pressure.">Laissez vos coordonnées : sous 24h on vous recontacte pour regarder votre boîte — où l'argent fuit, et par quelle brique on commencerait. Sans engagement, sans pression.</p>
   </div>
 </section>
 
@@ -116,4 +115,11 @@
     try {
       const r = await fetch('https://api.web3forms.com/submit', { method:'POST', body:new FormData(f) });
       if (r.ok) { f.style.display='none'; document.getElementById('ok').style.display='block'; }
-      else alert(en ? "Something went wrong. Try again or call +33 7 68 82 55 06." : "Une erreur est survenue. Réessayez ou appelez le 07 68 82 55 0
+      else alert(en ? "Something went wrong. Try again or call +33 7 68 82 55 06." : "Une erreur est survenue. Réessayez ou appelez le 07 68 82 55 06.");
+    } catch (err) {
+      alert(en ? "Network error. Please call +33 7 68 82 55 06." : "Erreur réseau. Appelez le 07 68 82 55 06.");
+    }
+  });
+</script>
+</body>
+</html>

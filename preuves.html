@@ -16,17 +16,16 @@
   <div class="wrap"><nav>
     <a class="logo" href="index.html"><img src="logo.svg" alt="Nexavyr — Captez plus, gagnez plus" style="height:26px;display:block"></a>
     <div class="nav-links">
-      <a href="produit.html" data-en="Product">Produit</a>
+      <a href="produit.html" data-en="Your system">Votre système</a>
       <a href="preuves.html" class="active" data-en="Proof">Preuves</a>
-      <a href="tarifs.html" data-en="Plans">Formules</a>
+      <a href="tarifs.html" data-en="The offer">L'offre</a>
       <a href="tarifs.html#securite" data-en="Security">Sécurité</a>
       <a href="contact.html" data-en="Contact">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="tel:+33768825506" class="nav-call">📞 07 68 82 55 06</a>
       <button class="btn btn-gho lang-btn" onclick="nxToggleLang()">🌐 FR</button>
-      <a href="demo.html" class="btn btn-gho" data-en="See a render">Voir un rendu</a>
-      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="See the render">Voir le rendu</a>
+      <a href="https://calendar.app.google/rVEU4drMzz1VFUm9A" target="_blank" rel="noopener" class="btn btn-pri" data-en="15-min call">Un appel de 15 min</a>
     </div>
   </nav></div>
 </header>
@@ -102,4 +101,13 @@
 <script src="i18n.js"></script>
 <script>
   (function(){
-    var e
+    var els=document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.12});
+      els.forEach(function(el){io.observe(el);});
+    } else { els.forEach(function(el){el.classList.add('in');}); }
+    setTimeout(function(){ if(!document.querySelector('.reveal.in')){ els.forEach(function(el){el.classList.add('in');}); } },1600);
+  })();
+</script>
+</body>
+</html>
