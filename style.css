@@ -164,4 +164,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 30px;color:var(--dim);fon
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:30px}
 @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
 footer a{color:var(--muted)}footer a:hover{color:var(--acc)}
-.foot-bottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.78rem}
+.foot-bottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.sys-grid .lead-brick{grid-column:1/-1}
+.sys-grid .lead-brick .bimg img{width:100%;max-height:220px;object-fit:cover;border-radius:14px;display:block}
